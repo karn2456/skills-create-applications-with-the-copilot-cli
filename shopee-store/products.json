@@ -1,0 +1,272 @@
+{
+  "products": [
+    {
+      "id": "TCIAP-001",
+      "name": "TCiAP TOEIC Hybrid Learning คอร์สออนไลน์+ออนไซต์ 36 ชั่วโมง [CEFR 2025]",
+      "name_note": "ชื่อสินค้า: แบรนด์ + ชื่อ + รุ่น ไม่เกิน 120 ตัวอักษร ไม่ใช้อีโมจิ",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 5900,
+      "original_price": 6500,
+      "discount_percent": 9,
+      "stock": 50,
+      "sku": "TCIAP-HYBRID-2025",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel ขึ้นไป",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์ส-logo-tciap-พื้นขาว.jpg",
+          "2_รูปตัวอย่างบทเรียนออนไลน์.jpg",
+          "3_รูปผู้สอนและรายละเอียดคอร์ส.jpg",
+          "4_รูปตารางเรียน-ระยะเวลา.jpg",
+          "5_รูปผลคะแนนผู้เรียนเก่า-testimonials.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP TOEIC Hybrid Learning 2025\n\n📚 รายละเอียดคอร์ส:\n• เรียน 36 ชั่วโมง (ออนไลน์ 30 ชั่วโมง + ออนไซต์ 6 ชั่วโมง)\n• ครอบคลุมทั้ง TOEIC Paper Base และ Computer Base\n• รองรับมาตรฐาน CEFR\n• เรียนวันเสาร์-อาทิตย์ เวลา 13:00-16:00 น.\n\n✅ จุดเด่น:\n• ผู้สอนได้คะแนน TOEIC เต็ม 990 คะแนน\n• ปรับหลักสูตรตาม English Proficiency Radar Chart เฉพาะบุคคล\n• อัตราผ่านการสอบสูงกว่า 93%\n• เรียนสดกับผู้สอนตัวต่อตัว\n\n👥 เหมาะสำหรับ:\n• ผู้ที่ต้องการคะแนน 550-750 คะแนน\n• ผู้ที่ต้องการพัฒนาทักษะ Listening + Reading\n• ผู้ที่มีเวลาจำกัดและต้องการวิธีเรียนแบบยืดหยุ่น\n\n⚠️ หมายเหตุ:\n• หลังชำระเงิน ทีมงาน TCiAP จะติดต่อกลับเพื่อยืนยันและแจ้งรายละเอียดการเรียนภายใน 1-2 วันทำการ\n• กรุณาแสดง Order ID เมื่อติดต่อ LINE @toeic",
+      "shipping": {
+        "weight_kg": 0.1,
+        "type": "digital_code",
+        "note": "สินค้าดิจิทัล/คอร์สออนไลน์ ส่งข้อมูลผ่าน LINE และอีเมล"
+      },
+      "variations": [
+        {
+          "name": "รูปแบบการเรียน",
+          "options": [
+            {"value": "Online Real-time (Sat-Sun 13:00-16:00)", "price": 5900},
+            {"value": "Online + Onsite Hybrid (Sat-Sun 13:00-16:00)", "price": 5900}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TCIAP-002",
+      "name": "TCiAP TOEIC Group Class Weekend คอร์สกลุ่ม 36 ชั่วโมง [Grammar+Exam Analysis]",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 7500,
+      "original_price": 8500,
+      "discount_percent": 12,
+      "stock": 30,
+      "sku": "TCIAP-GROUP-WEEKEND",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์สกลุ่ม-พื้นขาว.jpg",
+          "2_รูปบรรยากาศห้องเรียนออนไลน์-กลุ่ม.jpg",
+          "3_รูปตารางเรียน-12-sessions.jpg",
+          "4_รูปเนื้อหา-Grammar+Exam-Analysis.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP TOEIC Group Class Weekend\n\n📚 รายละเอียดคอร์ส:\n• เรียน 36 ชั่วโมง รวม 12 sessions\n• เรียนวันเสาร์-อาทิตย์ เวลา 13:00-16:00 น.\n• Online Real-time ผ่าน Video Conference\n• รวม Grammar Revision + Exam Analysis\n\n✅ จุดเด่น:\n• คุ้มค่า เรียนกลุ่มเล็กไม่เกิน 10 คน\n• ผู้สอนได้คะแนน TOEIC เต็ม 990 คะแนน\n• เน้นกลยุทธ์และเทคนิคสอบจริง\n• มีการทดสอบและ Mock Test ระหว่างคอร์ส\n\n👥 เหมาะสำหรับ:\n• ผู้ที่เคยสอบ TOEIC ต่ำกว่า 450 คะแนน\n• ผู้ที่ต้องการคะแนน 550-650 คะแนน\n• ผู้ที่มีเวลาว่างช่วงสุดสัปดาห์\n\n⚠️ หมายเหตุ:\n• หลังชำระเงิน ทีมงาน TCiAP จะติดต่อกลับภายใน 1-2 วันทำการ\n• ติดต่อ LINE @toeic พร้อม Order ID",
+      "variations": [
+        {
+          "name": "รูปแบบ",
+          "options": [
+            {"value": "Online Real-time Group Class", "price": 7500}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TCIAP-003",
+      "name": "TCiAP TOEIC Intensive ติวแหกโค้ง 12 ชั่วโมง [เพิ่มคะแนนก่อนสอบด่วน]",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 2900,
+      "original_price": 3500,
+      "discount_percent": 17,
+      "stock": 50,
+      "sku": "TCIAP-INTENSIVE-12HR",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกติวเข้ม-พื้นขาว.jpg",
+          "2_รูปเนื้อหา-เทคนิค-tricks-and-tips.jpg",
+          "3_รูปตัวอย่างข้อสอบและกลยุทธ์.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP TOEIC Intensive ติวแหกโค้ง 12 ชั่วโมง\n\n📚 รายละเอียดคอร์ส:\n• เรียน 12 ชั่วโมง คอร์สเร่งรัดเตรียมสอบ\n• เน้น Tricks & Tips สำหรับการทำข้อสอบจริง\n• ฝึก Mock Test ภายในคอร์ส\n\n✅ จุดเด่น:\n• เหมาะสำหรับผู้ที่มีเวลาน้อยก่อนสอบ\n• ผู้สอนมีประสบการณ์กว่า 25 ปี\n• เพิ่มคะแนนได้อย่างน้อย 50-100 คะแนน\n\n👥 เหมาะสำหรับ:\n• ผู้ที่เคยเรียน TOEIC มาแล้วและต้องการ refresh\n• ผู้ที่มีเวลาเตรียมสอบน้อย (1-2 สัปดาห์)\n• ผู้ที่ต้องการ score boost ก่อนสอบจริง\n\n⚠️ หมายเหตุ:\n• หลังชำระเงิน ทีมงาน TCiAP จะติดต่อกลับภายใน 1-2 วันทำการ\n• ติดต่อ LINE @toeic พร้อม Order ID"
+    },
+    {
+      "id": "TCIAP-004",
+      "name": "TCiAP TOEIC Private Online คอร์สตัวต่อตัวออนไลน์ 30 ชั่วโมง [ปรับเฉพาะบุคคล]",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 22900,
+      "original_price": 25000,
+      "discount_percent": 8,
+      "stock": 10,
+      "sku": "TCIAP-PRIVATE-ONLINE-30",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์ส-Private-Online-พื้นขาว.jpg",
+          "2_รูปผู้สอนและนักเรียน-1-on-1-online.jpg",
+          "3_รูปตารางเรียนยืดหยุ่น-flexible.jpg",
+          "4_รูป-Radar-Chart-ปรับหลักสูตรเฉพาะบุคคล.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP TOEIC Private ตัวต่อตัว Online 30 ชั่วโมง\n\n📚 รายละเอียดคอร์ส:\n• เรียน 30 ชั่วโมง (10 sessions)\n• Online Real-time ผ่าน Cisco Webex\n• กำหนดตารางเรียนยืดหยุ่นตามสะดวก\n• ปรับหลักสูตรเฉพาะตามจุดอ่อนรายบุคคล\n\n✅ จุดเด่น:\n• เรียนแบบ 1-on-1 กับผู้สอนคะแนนเต็ม 990\n• วิเคราะห์จุดอ่อนด้วย English Proficiency Radar Chart\n• ปรับเนื้อหาและความเร็วตามผู้เรียนแต่ละคน\n• ยืดหยุ่นเวลา เรียนได้ทุกวัน\n\n👥 เหมาะสำหรับ:\n• ผู้ที่ต้องการพัฒนาคะแนนอย่างมีประสิทธิภาพสูงสุด\n• ผู้ที่มีตารางงานยุ่งและต้องการเรียนนอกเวลา\n• ผู้ที่ต้องการคะแนน 700+ คะแนน\n• ผู้บริหาร/พนักงานองค์กรที่ต้องการ score official\n\n⚠️ หมายเหตุ:\n• หลังชำระเงิน ทีมงาน TCiAP จะติดต่อกลับภายใน 1-2 วันทำการ\n• ติดต่อ LINE @toeic พร้อม Order ID เพื่อนัดเรียนครั้งแรก",
+      "variations": [
+        {
+          "name": "จำนวนชั่วโมง",
+          "options": [
+            {"value": "30 ชั่วโมง (10 sessions) Online", "price": 22900},
+            {"value": "45 ชั่วโมง (15 sessions) Online", "price": 29900}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TCIAP-005",
+      "name": "TCiAP TOEIC Private Onsite คอร์สตัวต่อตัว On-Site 30 ชั่วโมง [กรุงเทพฯ]",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 27900,
+      "original_price": 30000,
+      "discount_percent": 7,
+      "stock": 5,
+      "sku": "TCIAP-PRIVATE-ONSITE-30",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์ส-Private-Onsite-พื้นขาว.jpg",
+          "2_รูปห้องเรียน-สถาบัน-TCiAP.jpg",
+          "3_รูปผู้สอน-กับ-นักเรียน-1-on-1.jpg",
+          "4_รูปที่ตั้งสถาบัน-แผนที่.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP TOEIC Private ตัวต่อตัว On-Site 30 ชั่วโมง\n\n📚 รายละเอียดคอร์ส:\n• เรียน 30 ชั่วโมง (10 sessions)\n• เรียนที่สถาบัน TCiAP พหลโยธิน เขตพญาไท กรุงเทพฯ\n• ปรับหลักสูตรเฉพาะตามจุดอ่อนรายบุคคล\n\n✅ จุดเด่น:\n• เรียนแบบ 1-on-1 ที่สถาบัน บรรยากาศเหมาะกับการเรียน\n• ผู้สอนคะแนนเต็ม 990 คะแนน\n• วิเคราะห์จุดอ่อนด้วย English Proficiency Radar Chart\n• นัดหมายตารางเรียนตามความสะดวก\n\n👥 เหมาะสำหรับ:\n• ผู้ที่ชอบเรียนแบบตัวต่อตัวในห้องเรียนจริง\n• ผู้ที่ต้องการสมาธิในการเรียนและไม่มีสิ่งรบกวน\n• ผู้ที่อยู่ในกรุงเทพฯ หรือปริมณฑล\n\n⚠️ หมายเหตุ:\n• สถานที่: ถนนพหลโยธิน เขตพญาไท กรุงเทพฯ\n• ติดต่อ LINE @toeic พร้อม Order ID เพื่อนัดเรียนครั้งแรก",
+      "variations": [
+        {
+          "name": "จำนวนชั่วโมง",
+          "options": [
+            {"value": "30 ชั่วโมง (10 sessions) Onsite", "price": 27900},
+            {"value": "45 ชั่วโมง (15 sessions) Onsite", "price": 32900}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TCIAP-006",
+      "name": "TCiAP IELTS English for Academic คอร์สเรียน IELTS Online [Band Score Up]",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 8900,
+      "original_price": 9900,
+      "discount_percent": 10,
+      "stock": 20,
+      "sku": "TCIAP-IELTS-ACADEMIC",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์ส-IELTS-พื้นขาว.jpg",
+          "2_รูปเนื้อหาครอบคลุม-4-skills.jpg",
+          "3_รูปผู้สอน-writing-speaking-tips.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP IELTS English for Academic\n\n📚 รายละเอียดคอร์ส:\n• ครอบคลุมทุก 4 ทักษะ: Listening, Reading, Writing, Speaking\n• เตรียมสอบ IELTS Academic สำหรับศึกษาต่อต่างประเทศ\n• สอนโดยผู้สอนที่มีประสบการณ์ตรงด้าน IELTS\n\n✅ จุดเด่น:\n• ผู้สอนจาก TCiAP ประสบการณ์กว่า 25 ปี\n• เน้น Writing Task 2 และ Speaking\n• ฝึก Mock Test เหมือนสอบจริง\n• รับรองผลด้วยสถิติผ่าน Band 6+ สูง\n\n⚠️ หมายเหตุ:\n• ติดต่อ LINE @toeic เพื่อสอบถามรายละเอียดเพิ่มเติม"
+    },
+    {
+      "id": "TCIAP-007",
+      "name": "TCiAP TOEFL iBT คอร์สเรียน TOEFL Online [เพื่อศึกษาต่อต่างประเทศ]",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 8900,
+      "original_price": 9900,
+      "discount_percent": 10,
+      "stock": 20,
+      "sku": "TCIAP-TOEFL-IBT",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์ส-TOEFL-พื้นขาว.jpg",
+          "2_รูปเนื้อหาครอบคลุม-reading-writing-speaking-listening.jpg",
+          "3_รูปผู้สอน-academic-english.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP TOEFL iBT Course\n\n📚 รายละเอียดคอร์ส:\n• เตรียมสอบ TOEFL iBT ครบทุกส่วน\n• Reading, Listening, Speaking, Writing\n• เหมาะสำหรับนักศึกษาที่ต้องการสมัครมหาวิทยาลัยในสหรัฐฯ\n\n✅ จุดเด่น:\n• ผู้สอนจาก TCiAP มีประสบการณ์กว่า 25 ปี\n• สอนกลยุทธ์การทำข้อสอบให้ได้ 100+ คะแนน\n• ฝึก Mock Test เหมือนสอบจริง\n\n⚠️ หมายเหตุ:\n• ติดต่อ LINE @toeic เพื่อสอบถามรายละเอียดเพิ่มเติม"
+    },
+    {
+      "id": "TCIAP-008",
+      "name": "TCiAP CU-Tep TU-Get คอร์สเรียนเตรียมสอบมหาวิทยาลัยจุฬา-ธรรมศาสตร์",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 5900,
+      "original_price": 6900,
+      "discount_percent": 14,
+      "stock": 30,
+      "sku": "TCIAP-CU-TU-TEST",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์ส-CU-TU-Test-พื้นขาว.jpg",
+          "2_รูปเนื้อหา-CU-Tep-format.jpg",
+          "3_รูปผู้สอน-university-exam.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP CU-Tep / TU-Get Preparation\n\n📚 รายละเอียดคอร์ส:\n• เตรียมสอบ CU-Tep (จุฬาลงกรณ์) และ TU-Get (ธรรมศาสตร์)\n• ครอบคลุมรูปแบบข้อสอบเฉพาะของแต่ละสถาบัน\n• เน้น Vocabulary, Grammar, Reading Comprehension\n\n✅ จุดเด่น:\n• ผู้สอนเชี่ยวชาญการสอบภาษาอังกฤษของมหาวิทยาลัยในไทย\n• เนื้อหาตรงกับรูปแบบข้อสอบจริง\n• สถิติผ่านสูงกว่า 90%\n\n⚠️ หมายเหตุ:\n• ติดต่อ LINE @toeic เพื่อสอบถามรายละเอียดเพิ่มเติม"
+    },
+    {
+      "id": "TCIAP-009",
+      "name": "TCiAP English for Corporate อบรมภาษาอังกฤษองค์กร In-House [Business English]",
+      "category_main": "หนังสือ ดนตรี และสื่อการเรียนรู้",
+      "category_sub": "คอร์สออนไลน์",
+      "price": 39900,
+      "original_price": 45000,
+      "discount_percent": 11,
+      "stock": 10,
+      "sku": "TCIAP-CORPORATE-INHOUSE",
+      "images": {
+        "count_required": 3,
+        "size": "500x500 pixel",
+        "cover_background": "พื้นหลังสีขาว",
+        "suggested_angles": [
+          "1_รูปหน้าปกคอร์สองค์กร-พื้นขาว.jpg",
+          "2_รูปบรรยากาศอบรมองค์กร-group-training.jpg",
+          "3_รูปเนื้อหา-business-english-corporate.jpg",
+          "4_รูปผู้สอน-corporate-trainer.jpg"
+        ]
+      },
+      "description": "🎓 TCiAP English for Corporate In-House Training\n\n📚 รายละเอียดคอร์ส:\n• อบรมภาษาอังกฤษเพื่อธุรกิจสำหรับองค์กร\n• ออกแบบหลักสูตรเฉพาะตามความต้องการของบริษัท\n• รองรับทั้ง On-Site ที่บริษัทและ Online\n• ราคาต่อกลุ่ม (ปรับได้ตามจำนวนผู้เรียน)\n\n✅ จุดเด่น:\n• ออกแบบหลักสูตรเฉพาะตาม Industry และ Job Function\n• ผู้สอนมีประสบการณ์ Corporate Training กว่า 25 ปี\n• รองรับ Business English, Email Writing, Presentation Skills\n• มีใบรับรองผ่านการอบรมสำหรับพนักงาน\n\n👥 เหมาะสำหรับ:\n• HR ที่ต้องการจัดอบรมพนักงาน\n• บริษัทที่ต้องการพัฒนาทักษะภาษาอังกฤษของทีม\n• พนักงานที่ต้องใช้ภาษาอังกฤษในงาน\n\n⚠️ หมายเหตุ:\n• ราคานี้สำหรับกลุ่ม 1-10 คน\n• กรุณาติดต่อ LINE @toeic เพื่อขอใบเสนอราคาเฉพาะ",
+      "variations": [
+        {
+          "name": "รูปแบบการอบรม",
+          "options": [
+            {"value": "Online Real-time (ทั่วประเทศ)", "price": 39900},
+            {"value": "On-Site ที่บริษัท (กรุงเทพฯ-ปริมณฑล)", "price": 45000}
+          ]
+        }
+      ]
+    }
+  ],
+  "shop_categories": [
+    {
+      "name": "คอร์ส TOEIC",
+      "products": ["TCIAP-001", "TCIAP-002", "TCIAP-003", "TCIAP-004", "TCIAP-005"]
+    },
+    {
+      "name": "คอร์สสอบมหาวิทยาลัย",
+      "products": ["TCIAP-006", "TCIAP-007", "TCIAP-008"]
+    },
+    {
+      "name": "คอร์สองค์กร",
+      "products": ["TCIAP-009"]
+    }
+  ]
+}

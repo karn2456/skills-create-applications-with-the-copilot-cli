@@ -1,0 +1,55 @@
+{
+  "shop": {
+    "name": "TCiAP Official Store",
+    "tagline": "สถาบัน TOEIC อันดับ 1 ประสบการณ์กว่า 25 ปี | TOEIC • IELTS • TOEFL",
+    "cover_image": {
+      "size": "1080x590 pixel",
+      "description": "แบนเนอร์หลักร้านค้า TCiAP แสดงโลโก้ คะแนนผ่าน 93% และคอร์สที่โดดเด่น",
+      "filename": "cover-tciap-1080x590.jpg"
+    },
+    "logo": {
+      "size": "ขนาดตามที่ Shopee กำหนด",
+      "description": "โลโก้ TCiAP บนพื้นหลังสีขาว",
+      "filename": "logo-tciap.jpg"
+    },
+    "banner_images": [
+      {
+        "order": 1,
+        "size": "600x300 pixel",
+        "description": "TOEIC Hybrid Learning 2025 - เรียนออนไลน์ผสมออนไซต์",
+        "filename": "banner1-toeic-hybrid-600x300.jpg"
+      },
+      {
+        "order": 2,
+        "size": "600x300 pixel",
+        "description": "ผู้สอนคะแนนเต็ม 990 คะแนน TOEIC อัตราผ่าน 93%",
+        "filename": "banner2-instructor-600x300.jpg"
+      },
+      {
+        "order": 3,
+        "size": "600x300 pixel",
+        "description": "คอร์ส Private ตัวต่อตัว ยืดหยุ่นเวลา ปรับเนื้อหาเฉพาะบุคคล",
+        "filename": "banner3-private-600x300.jpg"
+      },
+      {
+        "order": 4,
+        "size": "600x300 pixel",
+        "description": "IELTS • TOEFL • CU-Tep • TU-Get ครบทุกการสอบ",
+        "filename": "banner4-all-exams-600x300.jpg"
+      },
+      {
+        "order": 5,
+        "size": "600x300 pixel",
+        "description": "English for Corporate บริษัทสนใจอบรมหมู่คณะ ราคาพิเศษ",
+        "filename": "banner5-corporate-600x300.jpg"
+      }
+    ],
+    "shop_description": "TCiAP (Cooperate in Academic Programs) สถาบันเตรียมสอบภาษาอังกฤษชั้นนำ ก่อตั้งปี 2543 ประสบการณ์กว่า 25 ปี\n\n✅ อัตราผ่านการสอบ TOEIC สูงกว่า 93%\n✅ ผู้สอนทุกคนได้คะแนน TOEIC เต็ม 990 คะแนน\n✅ ใช้มาตรฐาน CEFR ในการวัดระดับภาษา\n✅ เรียนได้ทั้ง Online Real-time และ On-site\n✅ ปรับหลักสูตรตามระดับผู้เรียนรายบุคคล\n\n📞 ติดต่อสอบถาม:\n• LINE: @toeic\n• เว็บไซต์: www.tciap.com\n• ที่ตั้ง: ถนนพหลโยธิน เขตพญาไท กรุงเทพฯ\n\n⏰ วันทำการ: จันทร์-ศุกร์ 09:00-18:00 น.",
+    "operating_days": "จันทร์-ศุกร์ 09:00-18:00 น.",
+    "contact": {
+      "line": "@toeic",
+      "website": "www.tciap.com"
+    },
+    "warranty_policy": "รับประกันความพึงพอใจ หากไม่สามารถเรียนต่อได้ด้วยเหตุผลที่เหมาะสม สามารถติดต่อเพื่อเปลี่ยนรุ่นหรือรูปแบบการเรียนได้"
+  }
+}

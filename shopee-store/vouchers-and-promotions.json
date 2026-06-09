@@ -1,0 +1,66 @@
+{
+  "vouchers": [
+    {
+      "code": "TCIAP100",
+      "type": "shop_voucher",
+      "discount_type": "fixed_amount",
+      "discount_value": 100,
+      "minimum_spend": 2000,
+      "usage_limit": 100,
+      "valid_days": 90,
+      "applicable_to": "all_products",
+      "purpose": "ส่วนลดต้อนรับลูกค้าใหม่และสินค้าทั้งร้าน"
+    },
+    {
+      "code": "TCIAPTOEIC",
+      "type": "product_voucher",
+      "discount_type": "fixed_amount",
+      "discount_value": 500,
+      "minimum_spend": 5000,
+      "usage_limit": 50,
+      "valid_days": 60,
+      "applicable_to": ["TCIAP-001", "TCIAP-002", "TCIAP-003", "TCIAP-004", "TCIAP-005"],
+      "purpose": "ส่วนลดพิเศษสำหรับคอร์ส TOEIC"
+    },
+    {
+      "code": "TCIAP10",
+      "type": "shop_voucher",
+      "discount_type": "percentage",
+      "discount_value": 10,
+      "max_discount_cap": 500,
+      "minimum_spend": 3000,
+      "usage_limit": 30,
+      "valid_days": 30,
+      "applicable_to": "all_products",
+      "purpose": "โปรโมชั่น 10% สำหรับแคมเปญพิเศษ"
+    }
+  ],
+  "discount_promotions": [
+    {
+      "name": "TCiAP Grand Opening Sale",
+      "type": "discount_tag",
+      "products": [
+        {"sku": "TCIAP-HYBRID-2025", "original_price": 6500, "promo_price": 5900},
+        {"sku": "TCIAP-GROUP-WEEKEND", "original_price": 8500, "promo_price": 7500},
+        {"sku": "TCIAP-INTENSIVE-12HR", "original_price": 3500, "promo_price": 2900},
+        {"sku": "TCIAP-PRIVATE-ONLINE-30", "original_price": 25000, "promo_price": 22900},
+        {"sku": "TCIAP-PRIVATE-ONSITE-30", "original_price": 30000, "promo_price": 27900},
+        {"sku": "TCIAP-IELTS-ACADEMIC", "original_price": 9900, "promo_price": 8900},
+        {"sku": "TCIAP-TOEFL-IBT", "original_price": 9900, "promo_price": 8900},
+        {"sku": "TCIAP-CU-TU-TEST", "original_price": 6900, "promo_price": 5900}
+      ],
+      "note": "สร้าง Discount Tag ใน Marketing Centre เพื่อแสดงราคาลดให้ลูกค้าเห็น"
+    }
+  ],
+  "bundle_deals": [
+    {
+      "name": "TOEIC Starter Pack",
+      "type": "bundle",
+      "products_required": ["TCIAP-003", "TCIAP-001"],
+      "bundle_price": 8000,
+      "normal_price": 8800,
+      "savings": 800,
+      "note": "ซื้อ Intensive 12hr + Hybrid Learning ราคาพิเศษ"
+    }
+  ]
+}
