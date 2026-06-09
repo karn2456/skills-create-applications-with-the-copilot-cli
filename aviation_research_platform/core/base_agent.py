@@ -1,6 +1,7 @@
 """
-Base agent class — all Aviation Research agents inherit from this.
-Mirrors the agent pattern in both Orchestra (Cognitive Layer) and GitLab Duo (sub-agents).
+Base agent — foundation for all Aviation Research OS agents.
+Each agent owns a specialized system prompt, tools, and shares
+the research session + message bus.
 """
 from __future__ import annotations
 
@@ -9,66 +10,57 @@ from typing import Any
 
 import anthropic
 
-from .memory import ResearchMemory
+from .session import ResearchSession, ResearchPhase
 from .message_bus import AgentMessage, MessageBus
 
 
 class BaseResearchAgent(ABC):
-    """
-    Foundation for all Aviation Research Platform agents.
 
-    Each agent has:
-    - A specialized system prompt (domain expertise)
-    - Access to shared research memory (long-horizon context)
-    - Message bus for inter-agent communication
-    - Tool definitions for structured output
-    """
-
-    MODEL = "claude-opus-4-8"  # Use most capable model for research agents
+    MODEL = "claude-opus-4-8"
 
     def __init__(
         self,
         name: str,
-        memory: ResearchMemory,
+        phase: ResearchPhase,
+        session: ResearchSession,
         bus: MessageBus,
         client: anthropic.Anthropic,
     ):
         self.name = name
-        self.memory = memory
+        self.phase = phase
+        self.session = session
         self.bus = bus
         self.client = client
 
     @property
     @abstractmethod
-    def system_prompt(self) -> str:
-        """Domain-specific system prompt for this agent."""
+    def system_prompt(self) -> str: ...
 
-    @abstractmethod
     def tools(self) -> list[dict]:
-        """Anthropic tool definitions this agent can use."""
+        return []
 
-    def run(self, task: str, context: dict[str, Any] | None = None) -> str:
-        """Execute a research task and return the result."""
-        prior_context = self.memory.get_context_summary()
+    def run(self, task: str, artifact_type: str = "result",
+            artifact_title: str = "", context: dict[str, Any] | None = None) -> str:
 
-        messages = [
-            {
-                "role": "user",
-                "content": (
-                    f"{prior_context}\n\n"
-                    f"=== Current Task ===\n{task}"
-                    + (f"\n\nContext: {context}" if context else "")
-                ),
-            }
-        ]
+        ctx = self.session.context_summary()
+        user_content = f"=== Research Context ===\n{ctx}\n\n=== Task ===\n{task}"
+        if context:
+            user_content += f"\n\nAdditional context: {json_safe(context)}"
 
-        result = self._call_llm(messages)
-        self.memory.add(self.name, "result", result, task=task)
+        result = self._call_llm([{"role": "user", "content": user_content}])
+
+        self.session.add_artifact(
+            phase=self.phase,
+            agent=self.name,
+            artifact_type=artifact_type,
+            title=artifact_title or task[:80],
+            content=result,
+        )
         self.bus.publish(AgentMessage(
             sender=self.name,
             receiver="orchestrator",
             message_type="result",
-            payload={"task": task, "result": result},
+            payload={"task": task, "result": result, "artifact_type": artifact_type},
         ))
         return result
 
@@ -84,11 +76,14 @@ class BaseResearchAgent(ABC):
             kwargs["tools"] = agent_tools
 
         response = self.client.messages.create(**kwargs)
+        return "\n".join(
+            block.text for block in response.content if hasattr(block, "text")
+        )
 
-        # Collect all text content blocks
-        text_blocks = [
-            block.text
-            for block in response.content
-            if hasattr(block, "text")
-        ]
-        return "\n".join(text_blocks)
+
+def json_safe(obj: Any) -> str:
+    import json
+    try:
+        return json.dumps(obj, ensure_ascii=False, default=str)
+    except Exception:
+        return str(obj)

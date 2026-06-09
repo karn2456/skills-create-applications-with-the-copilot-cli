@@ -47,3 +47,7 @@ package-lock.json
 .eslintcache
 dist/
 build/
+*.pyc
+__pycache__/
+.research_sessions/
+.research_memory/

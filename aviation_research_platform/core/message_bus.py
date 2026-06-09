@@ -1,6 +1,5 @@
 """
-Inter-agent message bus — allows agents to pass results and requests.
-Mirrors the tool-calling communication pattern in GitLab Duo / Orchestra.
+Inter-agent message bus — synchronous publish/subscribe for agent-to-agent communication.
 """
 from __future__ import annotations
 
@@ -13,14 +12,13 @@ from typing import Any, Callable
 @dataclass
 class AgentMessage:
     sender: str
-    receiver: str          # agent name or "orchestrator" or "broadcast"
+    receiver: str          # agent name | "orchestrator" | "broadcast"
     message_type: str      # "result" | "request" | "error" | "status"
     payload: dict[str, Any]
     timestamp: float = field(default_factory=time.time)
 
 
 class MessageBus:
-    """Simple synchronous message bus for agent-to-agent communication."""
 
     def __init__(self):
         self._queues: dict[str, list[AgentMessage]] = defaultdict(list)
@@ -35,14 +33,10 @@ class MessageBus:
         self._handlers[receiver].append(handler)
 
     def consume(self, receiver: str) -> list[AgentMessage]:
-        messages = self._queues.pop(receiver, [])
-        return messages
+        return self._queues.pop(receiver, [])
 
     def broadcast(self, sender: str, message_type: str, payload: dict) -> None:
-        msg = AgentMessage(
-            sender=sender,
-            receiver="broadcast",
-            message_type=message_type,
-            payload=payload,
-        )
-        self._queues["broadcast"].append(msg)
+        self.publish(AgentMessage(
+            sender=sender, receiver="broadcast",
+            message_type=message_type, payload=payload,
+        ))
