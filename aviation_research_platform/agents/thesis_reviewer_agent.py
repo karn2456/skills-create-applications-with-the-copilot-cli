@@ -5,14 +5,15 @@ for academic quality, structural integrity, and aviation domain rigor.
 from __future__ import annotations
 
 from ..core.base_agent import BaseResearchAgent
+from ..core.session import ResearchPhase
 
 
 class ThesisReviewerAgent(BaseResearchAgent):
 
-    NAME = "thesis_reviewer_agent"
+    NAME = "thesis_reviewer"
 
-    def __init__(self, memory, bus, client):
-        super().__init__(self.NAME, memory, bus, client)
+    def __init__(self, session, bus, client):
+        super().__init__(self.NAME, ResearchPhase.PUBLICATION, session, bus, client)
 
     @property
     def system_prompt(self) -> str:

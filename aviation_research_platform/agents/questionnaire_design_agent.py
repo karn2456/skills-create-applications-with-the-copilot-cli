@@ -5,14 +5,15 @@ for aviation research, grounded in established scales and best practices.
 from __future__ import annotations
 
 from ..core.base_agent import BaseResearchAgent
+from ..core.session import ResearchPhase
 
 
 class QuestionnaireDesignAgent(BaseResearchAgent):
 
-    NAME = "questionnaire_design_agent"
+    NAME = "questionnaire_design"
 
-    def __init__(self, memory, bus, client):
-        super().__init__(self.NAME, memory, bus, client)
+    def __init__(self, session, bus, client):
+        super().__init__(self.NAME, ResearchPhase.DESIGN, session, bus, client)
 
     @property
     def system_prompt(self) -> str:

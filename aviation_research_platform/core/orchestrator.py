@@ -115,18 +115,17 @@ class AviationResearchOS:
             "gap_brainstorm":       GapBrainstormAgent(*args),
             # Design phase
             "experiment_design":    ExperimentDesignAgent(*args),
-            "questionnaire_design": QuestionnaireDesignAgent(
-                                        self.memory, self.bus, self.client),
+            "questionnaire_design": QuestionnaireDesignAgent(*args),
             # Execution phase
             "code_execution":       CodeExecutionAgent(*args),
             # Analysis phase
             "analysis":             AnalysisAgent(*args),
             # Writing phase
             "paper_writing":        PaperWritingAgent(*args),
-            "apa_reference":        APAReferenceAgent(self.memory, self.bus, self.client),
+            "apa_reference":        APAReferenceAgent(*args),
             # Publication phase
             "publication":          PublicationAgent(*args),
-            "thesis_reviewer":      ThesisReviewerAgent(self.memory, self.bus, self.client),
+            "thesis_reviewer":      ThesisReviewerAgent(*args),
         }
 
     # ── Public API ────────────────────────────────────────────────────────────

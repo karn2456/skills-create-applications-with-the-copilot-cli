@@ -6,14 +6,15 @@ from __future__ import annotations
 
 import re
 from ..core.base_agent import BaseResearchAgent
+from ..core.session import ResearchPhase
 
 
 class APAReferenceAgent(BaseResearchAgent):
 
-    NAME = "apa_reference_agent"
+    NAME = "apa_reference"
 
-    def __init__(self, memory, bus, client):
-        super().__init__(self.NAME, memory, bus, client)
+    def __init__(self, session, bus, client):
+        super().__init__(self.NAME, ResearchPhase.WRITING, session, bus, client)
 
     @property
     def system_prompt(self) -> str:
