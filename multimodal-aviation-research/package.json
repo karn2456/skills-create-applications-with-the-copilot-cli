@@ -1,0 +1,15 @@
+{
+  "name": "multimodal-aviation-research",
+  "version": "1.0.0",
+  "description": "Multimodal Aviation Research CLI - Evidence Traceability Framework for Aviation Management",
+  "main": "src/index.js",
+  "bin": {
+    "aviation-research": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node src/tests/etf.test.js"
+  },
+  "keywords": ["aviation", "research", "multimodal", "AI", "evidence-traceability"],
+  "license": "MIT"
+}
