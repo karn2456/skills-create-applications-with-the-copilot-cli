@@ -1,0 +1,12 @@
+{
+  "name": "ai-cost-effectiveness",
+  "version": "1.0.0",
+  "description": "AI Utilization Value Index (AUVI) - ดัชนีความคุ้มค่าในการใช้ AI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": ["AI", "cost-effectiveness", "ROI", "AUVI"],
+  "license": "MIT"
+}
