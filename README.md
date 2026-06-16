@@ -1,12 +1,91 @@
-# Create applications with the Copilot CLI
+# ติวเตรียมสอบ TOEIC 2026 อย่างมีระบบ
 
 <img src="https://octodex.github.com/images/Professortocat_v2.png" align="right" height="200px" />
 
-Hey karn2456!
+สวัสดีครับ karn2456! 👋
 
-Mona here. I'm done preparing your exercise. Hope you enjoy! 💚
+ยินดีต้อนรับสู่คู่มือเตรียมสอบ **TOEIC 2026** แบบมีระบบ
+ที่นี่เราแบ่งเนื้อหาออกเป็นขั้นตอน เรียนได้ตามจังหวะของตัวเอง ไม่ต้องรีบ! ☕
 
-Remember, it's self-paced so feel free to take a break! ☕️
+---
 
-[![](https://img.shields.io/badge/Go%20to%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/karn2456/skills-create-applications-with-the-copilot-cli/issues/1)
+## 🗺️ ลำดับขั้นตอนการเตรียมสอบ
 
+### ขั้นที่ 1 — รู้จักโครงสร้างข้อสอบ
+
+| Section | Part | จำนวนข้อ | เวลา |
+|---------|------|----------|------|
+| Listening | 1–4 | 100 ข้อ | 45 นาที |
+| Reading | 5–7 | 100 ข้อ | 75 นาที |
+| **รวม** | | **200 ข้อ** | **2 ชั่วโมง** |
+
+---
+
+### ขั้นที่ 2 — วัดระดับตัวเองก่อนเริ่มอ่าน
+
+```
+ทำ Mock Test 1 ชุด (50–100 ข้อ)
+    ↓
+บันทึกข้อที่ผิดแยกตาม Part
+    ↓
+หาว่าตัวเองอ่อน Part ไหนที่สุด
+    ↓
+วางแผนอ่านตาม Gap คะแนน
+```
+
+---
+
+### ขั้นที่ 3 — เทคนิคแยกตาม Part
+
+#### 🎧 Listening
+
+- **Part 1–2**: จับ keyword จากภาพและประโยคสั้น
+- **Part 3–4**: ฟังเฉพาะ `บทบาท + ปัญหา + การตัดสินใจ` ไม่ต้องจับทุกคำ
+
+#### 📖 Reading
+
+- **Part 5**: ระวัง tense / subject-verb agreement
+- **Part 6**: อ่าน context รอบๆ ก่อนเลือกคำ
+- **Part 7**: อ่านโจทย์ก่อน → scan เอกสารทีหลัง ประหยัดเวลา 30–40 วินาที/ข้อ
+
+---
+
+### ขั้นที่ 4 — แผนอ่าน 7 วันก่อนสอบ
+
+| วัน | โฟกัส |
+|-----|--------|
+| Day 1 | Mock Test + วิเคราะห์จุดอ่อน |
+| Day 2 | เจาะ Part 5–6 (Grammar & Vocab) |
+| Day 3 | เจาะ Part 3–4 (Conversations & Talks) |
+| Day 4 | เจาะ Part 7 (Reading Passages) |
+| Day 5 | ทำซ้ำ Part ที่อ่อนที่สุด 2 ชุด |
+| Day 6 | Full Mock Test จับเวลาจริง |
+| Day 7 | Review ข้อผิด + พักสมอง |
+
+---
+
+### ขั้นที่ 5 — เป้าหมายคะแนน vs วิธีอ่าน
+
+| เป้าหมาย | จุดเน้น |
+|----------|---------|
+| 500–600 | Part 1–2, Part 5 สั้น สร้าง confidence |
+| 600–750 | Part 3–4 inference + Part 6 context |
+| 750+ | Part 7 Double/Triple Passage ต้องแม่น |
+
+---
+
+## ⚠️ ข้อควรระวัง
+
+- ❌ อย่าอ่าน Part 7 ตั้งแต่บรรทัดแรกโดยไม่ดูโจทย์ก่อน
+- ❌ อย่าพยายามจับทุกคำใน Part 3–4
+- ✅ TOEIC **ไม่หักคะแนน** — เดาทุกข้อดีกว่าเว้น
+- ✅ ฝึกจับเวลาทุกครั้งที่ทำ Mock Test
+
+---
+
+## 🚀 เริ่มต้นได้เลย!
+
+[![](https://img.shields.io/badge/เริ่มทำแบบทดสอบ-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/karn2456/skills-create-applications-with-the-copilot-cli/issues/1)
+
+> 💡 **เคล็ดลับ**: เรียนแบบ self-paced หยุดพักได้ตามต้องการ  
+> สิ่งสำคัญคือความสม่ำเสมอ ไม่ใช่ความเร็ว 🎯
