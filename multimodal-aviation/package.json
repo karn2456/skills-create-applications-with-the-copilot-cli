@@ -1,0 +1,21 @@
+{
+  "name": "multimodal-aviation-research",
+  "version": "1.0.0",
+  "description": "Multimodal AI Research Framework for Aviation Management — Computer Vision, Digital Twin, Graph AI, Spatial AI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "aviation",
+    "multimodal-ai",
+    "digital-twin",
+    "computer-vision",
+    "heatmap",
+    "flight-network",
+    "sustainability",
+    "airport-management"
+  ],
+  "license": "MIT"
+}
