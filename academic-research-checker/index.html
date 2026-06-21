@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Research Master Checker ✈ Aviation Management</title>
+<style>
+:root {
+  --primary: #1a3a6b;
+  --secondary: #c0392b;
+  --accent: #e67e22;
+  --success: #27ae60;
+  --warning: #f39c12;
+  --danger: #e74c3c;
+  --gold: #f1c40f;
+  --purple: #8e44ad;
+  --teal: #16a085;
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #2c3e50;
+  --muted: #7f8c8d;
+  --border: #dde3ea;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+
+/* ===== HEADER ===== */
+.site-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #2c5aa0 100%);
+  color: #fff; padding: 16px 24px;
+  display: flex; align-items: center; gap: 16px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  position: sticky; top: 0; z-index: 100;
+}
+.site-header .logo { font-size: 28px; }
+.site-header h1 { font-size: 18px; font-weight: 700; line-height: 1.3; }
+.site-header h1 small { font-size: 12px; font-weight: 400; opacity: 0.8; display: block; }
+.header-score {
+  margin-left: auto; text-align: center;
+  background: rgba(255,255,255,0.15); border-radius: 12px; padding: 8px 16px;
+  min-width: 100px;
+}
+.header-score .score-num { font-size: 28px; font-weight: 800; line-height: 1; }
+.header-score .score-label { font-size: 11px; opacity: 0.85; }
+
+/* ===== NAV TABS ===== */
+.nav-tabs {
+  display: flex; background: #fff; border-bottom: 2px solid var(--border);
+  overflow-x: auto; position: sticky; top: 72px; z-index: 90;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.nav-tab {
+  padding: 12px 16px; cursor: pointer; white-space: nowrap;
+  border-bottom: 3px solid transparent; font-weight: 600; font-size: 13px;
+  color: var(--muted); transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+}
+.nav-tab:hover { color: var(--primary); background: #f5f8ff; }
+.nav-tab.active { color: var(--primary); border-bottom-color: var(--primary); background: #f0f5ff; }
+.nav-tab .tab-badge {
+  background: var(--primary); color: #fff; border-radius: 10px;
+  padding: 1px 6px; font-size: 10px; min-width: 20px; text-align: center;
+}
+.nav-tab.danger-tab .tab-badge { background: var(--danger); }
+
+/* ===== MAIN CONTENT ===== */
+.main { padding: 20px 24px; max-width: 1100px; margin: 0 auto; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--card); border-radius: 12px; padding: 20px;
+  margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid var(--border);
+}
+.card-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+.card-header .icon { font-size: 20px; }
+.card-header h2 { font-size: 16px; font-weight: 700; color: var(--primary); }
+.card-header h2 small { font-size: 11px; color: var(--muted); font-weight: 400; display: block; }
+.card-header .progress-pill {
+  margin-left: auto; background: var(--bg); border-radius: 20px;
+  padding: 4px 10px; font-size: 12px; font-weight: 700; color: var(--primary);
+  border: 1px solid var(--border);
+}
+
+/* ===== CHECKLIST ITEMS ===== */
+.checklist-group { margin-bottom: 16px; }
+.checklist-group-title {
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 8px; padding: 4px 8px;
+  background: var(--bg); border-radius: 6px;
+}
+.check-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 10px; border-radius: 8px; cursor: pointer;
+  transition: background 0.15s; margin-bottom: 4px;
+  border: 1px solid transparent;
+}
+.check-item:hover { background: #f5f8ff; border-color: #dde8ff; }
+.check-item.checked { background: #f0fdf4; border-color: #bbf7d0; }
+.check-item.fatal-item { border-left: 3px solid var(--danger); }
+.check-item.fatal-item.checked { background: #f0fdf4; border-left-color: var(--success); }
+.check-item input[type="checkbox"] {
+  width: 17px; height: 17px; flex-shrink: 0; margin-top: 1px;
+  accent-color: var(--success); cursor: pointer;
+}
+.check-item label { cursor: pointer; line-height: 1.5; flex: 1; }
+.check-item label .tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 1px 5px; border-radius: 4px; margin-right: 4px; vertical-align: middle;
+}
+.tag-fatal { background: #fee2e2; color: var(--danger); }
+.tag-critical { background: #fef3c7; color: #b45309; }
+.tag-golden { background: #fef9c3; color: #854d0e; }
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar-wrap { background: #e2e8f0; border-radius: 10px; height: 8px; overflow: hidden; margin: 6px 0; }
+.progress-bar { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+.pb-green { background: linear-gradient(90deg, var(--success), #4ade80); }
+.pb-yellow { background: linear-gradient(90deg, var(--warning), #fbbf24); }
+.pb-red { background: linear-gradient(90deg, var(--danger), #f87171); }
+
+/* ===== DASHBOARD ===== */
+.dashboard-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px; margin-bottom: 20px;
+}
+.stat-card {
+  background: var(--card); border-radius: 12px; padding: 16px;
+  text-align: center; border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.stat-card .stat-icon { font-size: 28px; margin-bottom: 6px; }
+.stat-card .stat-value { font-size: 28px; font-weight: 800; line-height: 1; }
+.stat-card .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.stat-card .stat-bar { margin-top: 8px; }
+
+/* ===== COHERENCE CHAIN ===== */
+.chain-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.chain-step {
+  display: flex; align-items: center; gap: 10px; width: 100%; max-width: 500px;
+}
+.chain-box {
+  flex: 1; padding: 8px 14px; border-radius: 8px; font-weight: 600;
+  font-size: 13px; text-align: center;
+  border: 2px solid var(--border); background: #fff; color: var(--text);
+  transition: all 0.3s;
+}
+.chain-box.filled { background: var(--primary); color: #fff; border-color: var(--primary); }
+.chain-arrow { font-size: 18px; color: var(--muted); }
+
+/* ===== FATAL ERRORS PANEL ===== */
+.fatal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.fatal-card {
+  border-radius: 10px; padding: 12px 14px;
+  border-left: 4px solid var(--danger); background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: all 0.2s;
+}
+.fatal-card.cleared { border-left-color: var(--success); background: #f0fdf4; }
+.fatal-card .fatal-num {
+  font-size: 11px; font-weight: 700; color: var(--danger);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.fatal-card.cleared .fatal-num { color: var(--success); }
+.fatal-card .fatal-title { font-size: 14px; font-weight: 700; margin: 2px 0 4px; }
+.fatal-card .fatal-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ===== DEFENSE QUESTIONS ===== */
+.defense-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.q-card {
+  background: #fff; border-radius: 10px; padding: 14px;
+  border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.q-card .q-num { font-size: 28px; font-weight: 900; color: #e2e8f0; float: left; margin-right: 8px; line-height: 1; }
+.q-card .q-ready {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 600; padding: 3px 8px;
+  border-radius: 6px; cursor: pointer; border: 1px solid;
+  margin-top: 8px; clear: both;
+}
+.q-ready.ready { background: #dcfce7; color: var(--success); border-color: #bbf7d0; }
+.q-ready.not-ready { background: #fee2e2; color: var(--danger); border-color: #fca5a5; }
+
+/* ===== ALERT BOX ===== */
+.alert {
+  padding: 12px 16px; border-radius: 8px; margin-bottom: 14px;
+  display: flex; gap: 10px; align-items: flex-start; font-size: 13px;
+}
+.alert-danger { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+.alert-warning { background: #fffbeb; border: 1px solid #fcd34d; color: #92400e; }
+.alert-success { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+.alert-info { background: #eff6ff; border: 1px solid #93c5fd; color: #1e3a8a; }
+
+/* ===== UOA TABLE ===== */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { background: var(--primary); color: #fff; padding: 8px 12px; text-align: left; }
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: #f5f8ff; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+.badge-red { background: #fee2e2; color: var(--danger); }
+.badge-orange { background: #ffedd5; color: #c2410c; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+
+/* ===== GOLDEN CHECKLIST ===== */
+.golden-item {
+  display: flex; align-items: flex-start; gap: 10px; padding: 10px;
+  border-radius: 8px; margin-bottom: 6px; cursor: pointer;
+  background: #fffdf0; border: 1px solid #fef08a; transition: all 0.2s;
+}
+.golden-item:hover { background: #fefce8; }
+.golden-item.checked { background: #f0fdf4; border-color: #86efac; }
+.golden-item input[type="checkbox"] { width: 17px; height: 17px; flex-shrink: 0; accent-color: #854d0e; }
+.golden-item label { cursor: pointer; font-weight: 500; }
+.star-icon { color: var(--gold); font-size: 16px; }
+
+/* ===== WEIGHT DISPLAY ===== */
+.weight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 16px 0; }
+.weight-item { text-align: center; padding: 12px; background: var(--bg); border-radius: 10px; }
+.weight-item .weight-pct { font-size: 22px; font-weight: 800; color: var(--primary); }
+.weight-item .weight-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* ===== SCORE RING ===== */
+.score-ring-wrap { display: flex; justify-content: center; margin: 20px 0; }
+.score-ring { position: relative; width: 140px; height: 140px; }
+.score-ring svg { transform: rotate(-90deg); }
+.score-ring .score-text {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  text-align: center;
+}
+.score-ring .score-text .big { font-size: 32px; font-weight: 900; color: var(--primary); }
+.score-ring .score-text .small { font-size: 12px; color: var(--muted); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .main { padding: 12px; }
+  .nav-tab { padding: 10px 12px; font-size: 12px; }
+  .dashboard-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  .nav-tabs, .site-header { display: none; }
+  .tab-panel { display: block !important; }
+}
+
+.section-divider { height: 1px; background: var(--border); margin: 16px 0; }
+.inline-score { font-weight: 700; color: var(--primary); }
+.text-danger { color: var(--danger); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.2s;
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: #2c5aa0; }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: #c0392b; }
+.btn-outline { background: #fff; color: var(--primary); border: 1px solid var(--primary); }
+.flex-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">✈</div>
+  <div>
+    <h1>Academic Research Master Checker
+      <small>Aviation Management | วิทยานิพนธ์/IS/Dissertation ป.โท–เอก | โดย ดร.ณัฐกรานต์ ไชยหาวงศ์</small>
+    </h1>
+  </div>
+  <div class="header-score">
+    <div class="score-num" id="headerScore">0</div>
+    <div class="score-label">คะแนนรวม / 100</div>
+  </div>
+</header>
+
+<!-- NAV TABS -->
+<nav class="nav-tabs" id="navTabs">
+  <div class="nav-tab active" data-tab="dashboard">📊 Dashboard</div>
+  <div class="nav-tab" data-tab="chapters">📚 บท 1–5 <span class="tab-badge" id="badge-chapters">0%</span></div>
+  <div class="nav-tab danger-tab" data-tab="fatal15">💀 15 จุดตาย <span class="tab-badge" id="badge-fatal15">0/15</span></div>
+  <div class="nav-tab" data-tab="uoa">🔍 UoA & Temporal</div>
+  <div class="nav-tab" data-tab="ethics">🔒 Ethics & AI</div>
+  <div class="nav-tab" data-tab="aviation">✈ Aviation</div>
+  <div class="nav-tab" data-tab="defense">🎤 Defense Prep</div>
+  <div class="nav-tab" data-tab="golden">⭐ Golden Std</div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ==================== DASHBOARD ==================== -->
+<div class="tab-panel active" id="tab-dashboard">
+  <div class="alert alert-info">
+    <span>ℹ️</span>
+    <span><strong>วิธีใช้:</strong> เลือกแต่ละแท็บเพื่อตรวจ Checklist ทีละส่วน ระบบจะคำนวณคะแนนรวมอัตโนมัติตามน้ำหนักของแต่ละหมวด กรณีพบจุดตาย (Fatal Error) ระบบจะแจ้งเตือนทันที</span>
+  </div>
+
+  <!-- Score Ring -->
+  <div class="card">
+    <div class="card-header"><span class="icon">📊</span><h2>คะแนนรวมและน้ำหนักการประเมิน</h2></div>
+    <div class="score-ring-wrap">
+      <div class="score-ring">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="58" fill="none" stroke="#e2e8f0" stroke-width="14"/>
+          <circle cx="70" cy="70" r="58" fill="none" stroke="#1a3a6b" stroke-width="14"
+            stroke-dasharray="364.4" stroke-dashoffset="364.4" id="ringCircle"
+            stroke-linecap="round" style="transition:stroke-dashoffset 0.6s ease"/>
+        </svg>
+        <div class="score-text">
+          <div class="big" id="ringScore">0</div>
+          <div class="small">/ 100</div>
+        </div>
+      </div>
+    </div>
+    <div class="weight-grid">
+      <div class="weight-item">
+        <div class="weight-pct">30%</div>
+        <div class="weight-label">Checklist บท 1–5</div>
+        <div style="font-size:18px;font-weight:700;color:var(--primary)" id="w1">0</div>
+      </div>
+      <div class="weight-item">
+        <div class="weight-pct">20%</div>
+        <div class="weight-label">จุดอ่อน/ข้อผิดพลาด</div>
+        <div style="font-size:18px;font-weight:700;color:var(--danger)" id="w2">0</div>
+      </div>
+      <div class="weight-item">
+        <div class="weight-pct">25%</div>
+        <div class="weight-label">ความสอดคล้องทั้งเล่ม</div>
+        <div style="font-size:18px;font-weight:700;color:var(--teal)" id="w3">0</div>
+      </div>
+      <div class="weight-item">
+        <div class="weight-pct">15%</div>
+        <div class="weight-label">Methodology & Stats</div>
+        <div style="font-size:18px;font-weight:700;color:var(--accent)" id="w4">0</div>
+      </div>
+      <div class="weight-item">
+        <div class="weight-pct">10%</div>
+        <div class="weight-label">Defense Readiness</div>
+        <div style="font-size:18px;font-weight:700;color:var(--purple)" id="w5">0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="dashboard-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📋</div>
+      <div class="stat-value text-primary" id="statTotal">0</div>
+      <div class="stat-label">รายการที่ผ่านแล้ว</div>
+      <div class="stat-bar"><div class="progress-bar-wrap"><div class="progress-bar pb-green" id="barTotal" style="width:0%"></div></div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💀</div>
+      <div class="stat-value text-danger" id="statFatal">0/15</div>
+      <div class="stat-label">จุดตายที่แก้ไขแล้ว</div>
+      <div class="stat-bar"><div class="progress-bar-wrap"><div class="progress-bar pb-green" id="barFatal" style="width:0%"></div></div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🔍</div>
+      <div class="stat-value" id="statUoA">0%</div>
+      <div class="stat-label">UoA & Temporal</div>
+      <div class="stat-bar"><div class="progress-bar-wrap"><div class="progress-bar pb-yellow" id="barUoA" style="width:0%"></div></div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎤</div>
+      <div class="stat-value" id="statDefense">0/10</div>
+      <div class="stat-label">Defense Q&A พร้อม</div>
+      <div class="stat-bar"><div class="progress-bar-wrap"><div class="progress-bar pb-yellow" id="barDefense" style="width:0%"></div></div></div>
+    </div>
+  </div>
+
+  <!-- Research Coherence Chain -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🔗</span><h2>Research Coherence Chain <small>ตรวจความสอดคล้องทุกจุดเชื่อมต่อ</small></h2></div>
+    <div class="alert alert-danger" id="chainAlert" style="display:none">
+      <span>⚠️</span><span>งานวิจัยที่ล้มเหลวส่วนใหญ่ไม่ได้พลาดที่การเขียน แต่พลาดที่<strong>ความเชื่อมโยง</strong>ระหว่างส่วนต่างๆ ทั้งเล่ม — ขาดจุดใดจุดหนึ่ง งานทั้งเล่มสูญเสียความน่าเชื่อถือทันที</span>
+    </div>
+    <div class="chain-wrap" id="chainWrap"></div>
+  </div>
+
+  <!-- Fatal Alerts -->
+  <div id="fatalAlertBox"></div>
+</div>
+
+<!-- ==================== CHAPTERS 1–5 ==================== -->
+<div class="tab-panel" id="tab-chapters">
+
+  <!-- CH1 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">📌</span>
+      <h2>บทที่ 1: บทนำ (Introduction)</h2>
+      <div class="progress-pill" id="prog-ch1">0/23</div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-ch1" style="width:0%"></div></div>
+
+    <div class="checklist-group" style="margin-top:12px">
+      <div class="checklist-group-title">1.1 ความเป็นมาและความสำคัญของปัญหา</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>อธิบายบริบทของอุตสาหกรรม/องค์กร/ปัญหาอย่างชัดเจน</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>แสดงข้อมูลสถิติ/ข้อมูลเชิงประจักษ์สนับสนุน</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>แสดงแนวโน้มการเปลี่ยนแปลงที่เกี่ยวข้อง</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>เชื่อมโยงสู่ปัญหาวิจัย (Research Problem)</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label><span class="tag tag-fatal">FATAL</span>ระบุ Research Gap ชัดเจน</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ระบุ Practical Gap</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ระบุ Theoretical Gap</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ระบุ Methodological Gap (ถ้ามี)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>อ้างอิงแหล่งข้อมูลที่น่าเชื่อถือ ไม่เกิน 5 ปี</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ไม่อ้างอิงจากเว็บไซต์ทั่วไปโดยไม่มีเจ้าของชัดเจน</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">1.2 คำถามวิจัย (Research Questions)</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>สอดคล้องกับปัญหาวิจัยและ Research Gap</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ตอบได้ด้วยข้อมูลและวิธีวิจัยที่เลือก</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>มีความชัดเจน ไม่กว้างเกินไป</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>สอดคล้องกับวัตถุประสงค์การวิจัย</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">1.3 วัตถุประสงค์การวิจัย</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ระบุชัดเจน วัดผลได้</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>สอดคล้องกับคำถามวิจัย</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label><span class="tag tag-fatal">FATAL</span>สอดคล้องกับสมมติฐานและกรอบแนวคิด</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>จำนวนวัตถุประสงค์สัมพันธ์กับตัวแปรที่ศึกษา</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">1.4 สมมติฐานการวิจัย</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ระบุทิศทางความสัมพันธ์ของตัวแปร</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>มีทฤษฎีรองรับ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>มีงานวิจัยก่อนหน้ารองรับ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>เขียนในรูปที่ทดสอบได้เชิงสถิติ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ไม่ตั้งสมมติฐานเกินความจำเป็น</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">1.5 ขอบเขตและประโยชน์</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ขอบเขตด้านเนื้อหา/ตัวแปร</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ขอบเขตด้านประชากร/พื้นที่/เวลา</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ประโยชน์เชิงวิชาการ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch1"><label>ประโยชน์เชิงบริหาร/นโยบาย/อุตสาหกรรม</label></div>
+    </div>
+  </div>
+
+  <!-- CH2 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">📚</span>
+      <h2>บทที่ 2: ทบทวนวรรณกรรม (Literature Review)</h2>
+      <div class="progress-pill" id="prog-ch2">0/15</div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-ch2" style="width:0%"></div></div>
+
+    <div class="checklist-group" style="margin-top:12px">
+      <div class="checklist-group-title">2.1 ทฤษฎีที่เกี่ยวข้อง</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>มีทฤษฎีหลักและทฤษฎีรองที่เชื่อมกับตัวแปร (TAM/SERVQUAL/UTAUT/TPB/Resilience)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>อธิบายเหตุผลการเลือกใช้ทฤษฎี</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>มีการสังเคราะห์และเปรียบเทียบทฤษฎี</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>ไม่เลือกทฤษฎีเก่าเกินไปหรือไม่ตรงประเด็น</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">2.2 งานวิจัยที่เกี่ยวข้อง</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>งานวิจัยในประเทศ (ที่เกี่ยวข้องกับบริบทไทย)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>งานวิจัยต่างประเทศ (Scopus Q1–Q2 เป็นหลัก)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>งานวิจัยล่าสุด 3–5 ปี มากกว่า 70%</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>ครอบคลุมตัวแปรทุกตัวในกรอบแนวคิด</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>มีการวิเคราะห์จุดเหมือนและจุดต่างของงานวิจัย</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>มี Systematic/Critical Analysis ไม่ใช่แค่ Summary</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">2.3 Research Gap & กรอบแนวคิด</div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label><span class="tag tag-fatal">FATAL</span>ระบุช่องว่างงานวิจัยชัดเจน (What is unknown? Inconsistent? Missing? Never tested?)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>ระบุสิ่งที่ยังไม่ถูกศึกษาในบริบทนี้</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>ระบุตัวแปรอิสระ ตัวแปรตาม Mediator Moderator</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label><span class="tag tag-fatal">FATAL</span>กรอบแนวคิดมีแหล่งอ้างอิง ไม่สร้างเองโดยไม่มีฐานทฤษฎี</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch2"><label>ลูกศรความสัมพันธ์ในกรอบแนวคิดชัดเจน</label></div>
+    </div>
+  </div>
+
+  <!-- CH3 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">🔬</span>
+      <h2>บทที่ 3: วิธีดำเนินการวิจัย (Methodology)</h2>
+      <div class="progress-pill" id="prog-ch3">0/20</div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-ch3" style="width:0%"></div></div>
+
+    <div class="checklist-group" style="margin-top:12px">
+      <div class="checklist-group-title">3.1 รูปแบบการวิจัยและกลุ่มตัวอย่าง</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ระบุรูปแบบการวิจัย (Quantitative/Qualitative/Mixed) พร้อมเหตุผล</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ระบุประชากรและ Sampling Frame ชัดเจน</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ระบุวิธีการสุ่มตัวอย่าง (Sampling Technique)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>คำนวณขนาดตัวอย่างด้วยสูตรที่อ้างอิงได้</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label><span class="tag tag-fatal">FATAL</span>CB-SEM: Sample ≥ 200–400 | PLS-SEM: Sample ≥ 100–200 (ห้ามใช้ n=120 กับ SEM โดยไม่มีเหตุผล)</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">3.2 เครื่องมือวิจัย</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>พัฒนาแบบสอบถามจากทฤษฎีและงานวิจัยที่อ้างอิงได้</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label><span class="tag tag-fatal">FATAL</span>ทุกตัวแปรมีข้อคำถามครบถ้วน ไม่มีข้อซ้ำหรือ Double-Barreled Question</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ผ่าน Expert Review (≥ 3 ผู้เชี่ยวชาญ)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>IOC > 0.50 ทุกข้อ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ผ่าน Pilot Test (n = 30–50)</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label><span class="tag tag-fatal">FATAL</span>Cronbach's Alpha > 0.70 | Composite Reliability > 0.70</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">3.3 CFA/SEM Quality</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>Factor Loading > 0.50 (เป้าหมาย > 0.70)</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label><span class="tag tag-fatal">FATAL</span>AVE > 0.50</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>Composite Reliability > 0.70</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>Discriminant Validity (HTMT < 0.85 หรือ Fornell-Larcker Criterion)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>Model Fit: CFI > 0.90 | RMSEA < 0.08 | SRMR < 0.08</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">3.4 Statistical Assumptions</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ตรวจ Normality</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ตรวจ Outlier</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label><span class="tag tag-fatal">FATAL</span>ตรวจ Multicollinearity (VIF < 5)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ตรวจ Common Method Bias (Harman's Single Factor/CFA Marker)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch3"><label>ตรวจ Homoscedasticity (ถ้าใช้ Regression)</label></div>
+    </div>
+  </div>
+
+  <!-- CH4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">📊</span>
+      <h2>บทที่ 4: ผลการวิเคราะห์ข้อมูล (Results)</h2>
+      <div class="progress-pill" id="prog-ch4">0/14</div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-ch4" style="width:0%"></div></div>
+
+    <div class="checklist-group" style="margin-top:12px">
+      <div class="checklist-group-title">4.1 การนำเสนอข้อมูล</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>ข้อมูลทั่วไป (เพศ อายุ การศึกษา อาชีพ ฯลฯ) ครบถ้วน</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>ค่าเฉลี่ย SD แปลผลระดับความคิดเห็น</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>ตารางและข้อความสอดคล้องกัน ไม่ซ้ำซ้อน</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>ตัวเลขถูกต้อง ร้อยละรวม = 100%</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">4.2 Measurement Model (CFA)</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>รายงาน Factor Loading ทุกตัว</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>รายงาน CR และ AVE</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>รายงาน Discriminant Validity (HTMT/Fornell-Larcker)</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label><span class="tag tag-fatal">FATAL</span>รายงาน Model Fit Index ครบ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>Effect Size (f² หรือ Q²)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>Common Method Bias Test</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">4.3 Structural Model & สมมติฐาน</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>Path Coefficient (Beta), T-value, P-value ครบ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>R² (Explained Variance)</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label><span class="tag tag-fatal">FATAL</span>สรุปผลสมมติฐานในตารางเดียว (Supported/Not Supported) และผลการวิจัยตอบวัตถุประสงค์ครบ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch4"><label>ไม่แปลผลเกินกว่าที่ข้อมูลแสดง</label></div>
+    </div>
+  </div>
+
+  <!-- CH5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">📝</span>
+      <h2>บทที่ 5: สรุป อภิปรายผลและข้อเสนอแนะ (Conclusion)</h2>
+      <div class="progress-pill" id="prog-ch5">0/16</div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-ch5" style="width:0%"></div></div>
+
+    <div class="checklist-group" style="margin-top:12px">
+      <div class="checklist-group-title">5.1 สรุปผลและอภิปราย</div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label><span class="tag tag-fatal">FATAL</span>สรุปตามวัตถุประสงค์และคำถามวิจัยทุกข้อ (Objective มีกี่ข้อ Results ต้องตอบครบ)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>ไม่คัดลอกผลจากบทที่ 4 มาทั้งหมดโดยไม่สังเคราะห์</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>อภิปรายเชื่อมโยงทฤษฎีหลักที่ใช้</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>เปรียบเทียบงานวิจัยที่สอดคล้องและขัดแย้ง (ผลเหมือนใคร? ต่างจากใคร? เพราะอะไร? สอดคล้องทฤษฎีใด?)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>อธิบายเหตุผลของผลที่พบในบริบทการบินไทย</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">5.2 Implications & Contributions</div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label><span class="tag tag-fatal">FATAL</span>Theoretical Contribution ชัดเจน (สร้างองค์ความรู้ใหม่/ขยายทฤษฎีใด) — ตอบ "So What?" ได้</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>Practical/Managerial Contribution</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>Policy Contribution</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>Future Research Agenda (อย่างน้อย 3–5 ข้อ พร้อมทิศทางและความเป็นไปได้)</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">5.3 ข้อจำกัดและข้อเสนอแนะ</div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>ข้อจำกัดด้านเวลา/พื้นที่/กลุ่มตัวอย่าง/เครื่องมือ (ต้องเป็นข้อจำกัดที่แท้จริง ไม่กว้างเกินไป)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>ข้อเสนอแนะเชิงนโยบายเฉพาะเจาะจง ไม่กว้างเกินไป</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>ข้อเสนอแนะเชิงวิชาการเชื่อมกับผลวิจัย</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>ข้อเสนอแนะงานวิจัยในอนาคต: กลุ่มตัวอย่างใหม่/ตัวแปรใหม่/Mixed Methods/Longitudinal</label></div>
+    </div>
+    <div class="checklist-group">
+      <div class="checklist-group-title">ตลอดทั้งเล่ม — Variable Consistency</div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label><span class="tag tag-fatal">FATAL</span>ชื่อตัวแปรเหมือนกันทุกบท (ห้ามใช้ Service Quality/Perceived SQ/Airport SQ สลับกัน)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>ตาราง: Table Number + Title + Source ครบทุกตาราง</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>ภาพ: Figure Number + Caption + Source ครบทุกภาพ</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>In-text citation ทุกรายการมีใน Reference List และ Reference ทุกรายการถูกอ้างในเนื้อหา</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ch5"><label>APA 7th Edition ถูกต้องสม่ำเสมอทั้งเล่ม (Smith (2021) ไม่ใช่ Smith et al., 2021 ปนกัน)</label></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 15 FATAL POINTS ==================== -->
+<div class="tab-panel" id="tab-fatal15">
+  <div class="alert alert-danger">
+    <span>💀</span>
+    <span><strong>กว่า 80% ของงานที่ถูกแก้ไขหนักไม่ได้พลาดที่ "การเขียน" แต่พลาดที่ "ความเชื่อมโยง"</strong><br>
+    Problem → Objective → Framework → Method → Result → Conclusion — หากโซ่นี้ขาดเพียง 1 จุด งานวิจัยทั้งเล่มสูญเสียความน่าเชื่อถือทันที</span>
+  </div>
+  <div class="fatal-grid" id="fatal15Grid"></div>
+</div>
+
+<!-- ==================== UOA & TEMPORAL ==================== -->
+<div class="tab-panel" id="tab-uoa">
+  <div class="alert alert-danger">
+    <span>⚠️</span>
+    <span><strong>2 จุดนี้สำคัญกว่าข้อผิดพลาดอื่นทั้งหมด</strong> — เป็นข้อผิดพลาดเชิงตรรกะ (Logical Error) ที่ฝังอยู่ในการออกแบบวิจัยตั้งแต่ต้น <strong>ไม่สามารถแก้ไขได้ด้วยการเขียนใหม่</strong> ต้องกลับไปออกแบบหรือเก็บข้อมูลใหม่เท่านั้น</span>
+  </div>
+
+  <!-- UOA -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🔍</span><h2>Unit of Analysis (UoA) — ข้อผิดพลาดระดับการวิเคราะห์<small>ระดับความเสียหาย: สูงมาก — ต้องออกแบบใหม่ทั้งหมด</small></h2><div class="progress-pill" id="prog-uoa">0/7</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-uoa" style="width:0%"></div></div>
+
+    <div class="alert alert-warning" style="margin-top:12px">
+      <span>📘</span>
+      <span>UoA = หน่วยที่งานวิจัยต้องการศึกษาและสรุปผล<br>ข้อผิดพลาดเกิดเมื่อ: <strong>ทฤษฎีพูดถึงระดับหนึ่ง แต่ข้อมูลเก็บอีกระดับ แล้วสรุปข้ามระดับ</strong></span>
+    </div>
+
+    <table class="data-table" style="margin-bottom:14px">
+      <thead><tr><th>ระดับทฤษฎี</th><th>ระดับข้อมูล</th><th>ข้อผิดพลาด</th><th>ตัวอย่าง Aviation</th></tr></thead>
+      <tbody>
+        <tr><td>องค์กร</td><td>บุคคล</td><td><span class="badge badge-red">Ecological Fallacy</span></td><td>ศึกษา Airline Resilience แต่เก็บข้อมูลจากพนักงานแต่ละคน แล้วสรุปถึงสายการบิน</td></tr>
+        <tr><td>บุคคล</td><td>องค์กร</td><td><span class="badge badge-orange">Atomistic Fallacy</span></td><td>ศึกษาพฤติกรรมผู้โดยสาร แต่ใช้ข้อมูลระดับสนามบิน แล้วสรุปถึงบุคคล</td></tr>
+        <tr><td>กลุ่ม</td><td>บุคคล</td><td><span class="badge badge-blue">Cross-level Error</span></td><td>ศึกษาทีม Ground Handling แต่ไม่ใช้ HLM/MSEM เพื่อจัดการ Nested Data</td></tr>
+      </tbody>
+    </table>
+
+    <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="uoa"><label><span class="tag tag-fatal">CRITICAL</span>ระบุหน่วยการวิเคราะห์ (UoA) ชัดเจนตั้งแต่บทที่ 1 — บุคคล/กลุ่ม/องค์กร/อุตสาหกรรม</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="uoa"><label>ตรวจว่าทฤษฎีที่เลือกพูดถึงระดับเดียวกับ UoA</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="uoa"><label>ตรวจว่าเครื่องมือ (Questionnaire) วัดในระดับเดียวกับ UoA</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="uoa"><label>ตรวจว่าสถิติที่เลือกเหมาะกับ UoA (Single-level vs. Multi-level)</label></div>
+    <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="uoa"><label><span class="tag tag-fatal">CRITICAL</span>ถ้าข้อมูล Nested (พนักงานอยู่ในทีม ทีมอยู่ในองค์กร) ต้องตรวจ ICC > 0.05 → ใช้ HLM หรือ MSEM</label></div>
+    <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="uoa"><label><span class="tag tag-fatal">CRITICAL</span>บทสรุปและข้อเสนอแนะต้องสรุปในระดับเดียวกับ UoA ห้ามข้ามระดับ</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="uoa"><label>ตรวจ Construct Definition ในบทที่ 2 ว่านิยามตัวแปรในระดับใด</label></div>
+  </div>
+
+  <!-- TEMPORAL -->
+  <div class="card">
+    <div class="card-header"><span class="icon">⏱️</span><h2>Temporal Validity — ข้อผิดพลาดด้านความสอดคล้องของเวลา<small>ระดับความเสียหาย: สูงมาก — ต้องเก็บข้อมูลใหม่</small></h2><div class="progress-pill" id="prog-tv">0/7</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-tv" style="width:0%"></div></div>
+
+    <div class="alert alert-warning" style="margin-top:12px">
+      <span>📘</span>
+      <span>Temporal Validity = ความสามารถในการนำผลวิจัยไปใช้ในบริบทเวลาที่ต้องการสรุป<br>
+      <strong>อุตสาหกรรมการบินมีความเสี่ยงสูงเป็นพิเศษ</strong> เพราะมีปัจจัยกระทบแบบ External Shock เช่น COVID/น้ำมันแพง/สงคราม</span>
+    </div>
+
+    <table class="data-table" style="margin-bottom:14px">
+      <thead><tr><th>ช่วงเวลา</th><th>ความเสี่ยง Temporal Validity</th><th>คำถามกรรมการ</th></tr></thead>
+      <tbody>
+        <tr><td>COVID-19 (มี.ค. 2563 – ธ.ค. 2565)</td><td>พฤติกรรมผู้โดยสารผิดปกติ ความกลัว Social Distancing</td><td>ข้อมูลที่เก็บช่วง COVID สะท้อนพฤติกรรมปกติได้จริงหรือไม่?</td></tr>
+        <tr><td>Recovery (ม.ค. 2566 – ปัจจุบัน)</td><td>Pent-up Demand สูงผิดปกติ ผู้โดยสารยังปรับตัว</td><td>ผลที่ได้จะ Generalize ไปสู่ภาวะปกติในอนาคตได้หรือไม่?</td></tr>
+        <tr><td>High Season (พ.ย.–ก.พ.)</td><td>Tourist Profile ต่างจาก Business Traveler อย่างมีนัย</td><td>ทำไมไม่เก็บข้อมูลให้ครอบคลุมทั้งปี?</td></tr>
+        <tr><td>Cross-sectional (เก็บครั้งเดียว)</td><td>ไม่สามารถสรุป Causality ได้จริง ทำได้แค่ Association</td><td>เหตุใดจึงสรุปว่า X ส่งผล Y ทั้งที่ใช้ Cross-sectional Design?</td></tr>
+      </tbody>
+    </table>
+
+    <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="tv"><label><span class="tag tag-fatal">CRITICAL</span>ระบุช่วงเวลาเก็บข้อมูลชัดเจน (เดือน ปี) ในบทที่ 3</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="tv"><label>อธิบายว่าช่วงเวลานั้นเป็นตัวแทนของภาวะ "ปกติ" ได้อย่างไร</label></div>
+    <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="tv"><label><span class="tag tag-fatal">CRITICAL</span>ถ้าเก็บช่วง COVID หรือ Recovery — ต้องระบุใน Limitation และอธิบายผลกระทบต่อ Generalizability</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="tv"><label>ระบุ Seasonality ของอุตสาหกรรมการบิน (High/Low Season) และผลต่อกลุ่มตัวอย่าง</label></div>
+    <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="tv"><label><span class="tag tag-fatal">CRITICAL</span>Cross-sectional Design: ต้องยอมรับว่าไม่สามารถสรุป Causality ได้ และเสนอ Longitudinal Study ใน Future Research</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="tv"><label>ตรวจว่า Literature ที่ใช้อ้างอิงยังมีความ Valid ในบริบทเวลาปัจจุบัน (ไม่เกิน 5 ปีสำหรับงานหลัก)</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="tv"><label>ถ้าศึกษา Technology Adoption ต้องระบุว่า Technology ที่ศึกษายังมีอยู่และใช้งานอยู่จริงในช่วงเก็บข้อมูล</label></div>
+  </div>
+
+  <!-- Pre-Defense UoA/TV -->
+  <div class="card">
+    <div class="card-header"><span class="icon">🎯</span><h2>Pre-Defense Audit — คำถามที่กรรมการจะถามแน่นอน</h2></div>
+    <table class="data-table">
+      <thead><tr><th>ประเด็น</th><th>คำถามจากกรรมการ</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-blue">UoA</span> Unit of Analysis</td><td>หน่วยการวิเคราะห์ของงานนี้คืออะไร และทำไมไม่ใช้ระดับอื่น?</td></tr>
+        <tr><td><span class="badge badge-blue">UoA</span> Level-Theory Match</td><td>ทฤษฎีที่ใช้พัฒนาสำหรับระดับใด สอดคล้องกับ UoA ของงานนี้หรือไม่?</td></tr>
+        <tr><td><span class="badge badge-blue">UoA</span> Construct Definition</td><td>นิยาม Resilience/Satisfaction/Loyalty ในระดับบุคคลหรือองค์กร?</td></tr>
+        <tr><td><span class="badge badge-blue">UoA</span> Conclusion Scope</td><td>ข้อสรุปที่ว่า "สายการบินควรทำ X" มาจากข้อมูลระดับพนักงาน ไม่ใช่สายการบิน ท่านอธิบายได้ไหม?</td></tr>
+        <tr><td><span class="badge badge-orange">TV</span> Data Period</td><td>เก็บข้อมูลช่วงใด ทำไมช่วงนั้นจึงเป็นตัวแทนพฤติกรรมปกติได้?</td></tr>
+        <tr><td><span class="badge badge-orange">TV</span> Seasonality</td><td>ทำไมไม่ control Seasonality ในการวิจัย?</td></tr>
+        <tr><td><span class="badge badge-orange">TV</span> Causality</td><td>Cross-sectional Design สรุป Causality ได้จริงหรือไม่?</td></tr>
+        <tr><td><span class="badge badge-orange">TV</span> Generalizability</td><td>ผลที่ได้จะยัง Valid อยู่ใน 3–5 ปีข้างหน้าหรือไม่?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== ETHICS & AI ==================== -->
+<div class="tab-panel" id="tab-ethics">
+  <div class="card">
+    <div class="card-header"><span class="icon">🔒</span><h2>Ethics & Research Integrity<small>จริยธรรมการวิจัย</small></h2><div class="progress-pill" id="prog-ethics">0/5</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-ethics" style="width:0%"></div></div>
+    <div style="margin-top:12px">
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ethics"><label><span class="tag tag-fatal">CRITICAL</span>ได้รับอนุมัติจริยธรรมการวิจัย (IRB/Ethics Committee) ก่อนเก็บข้อมูล</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ethics"><label>มี Informed Consent จากผู้เข้าร่วมวิจัยทุกคน</label></div>
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ethics"><label><span class="tag tag-fatal">FATAL</span>ผ่านการตรวจ Plagiarism ไม่เกิน 25% (Turnitin/CopyCatch/iThenticate)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ethics"><label>ไม่มี Self-plagiarism จากงานเดิมของตนเองที่ตีพิมพ์แล้ว</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ethics"><label>อ้างอิงทุกแหล่งที่นำมาใช้ ไม่ละเมิด Copyright</label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="icon">🤖</span><h2>AI-Generated Content Risk (สำคัญมาก 2024–2026)<small>ความเสี่ยงจากการใช้ AI</small></h2><div class="progress-pill" id="prog-ai">0/5</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-ai" style="width:0%"></div></div>
+    <div class="alert alert-warning" style="margin-top:12px">
+      <span>🤖</span><span>กรรมการบางท่านใช้ AI Detector ตรวจ — เตรียมรับมือและใช้ AI อย่างโปร่งใส</span>
+    </div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ai"><label>ไม่ใช้ AI เขียนแทนทั้งหมดโดยไม่ตรวจสอบความถูกต้อง</label></div>
+    <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="ai"><label><span class="tag tag-fatal">CRITICAL</span>ข้อมูลสถิติและการอ้างอิงที่ AI สร้างต้องมีแหล่งอ้างอิงจริงที่ตรวจสอบได้ (AI อาจ hallucinate references)</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ai"><label>เตรียมรับมือกรรมการที่ใช้ AI Detector ตรวจ</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ai"><label>การใช้ AI ต้องโปร่งใสและสอดคล้องกับนโยบายของสถาบัน</label></div>
+    <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="ai"><label>Literature Review และ Discussion ต้องมีความเข้าใจเชิงวิชาการของผู้วิจัยจริง ไม่ใช่แค่ copy AI output</label></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="icon">💾</span><h2>Data Management<small>การจัดการข้อมูลวิจัย</small></h2><div class="progress-pill" id="prog-data">0/5</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-data" style="width:0%"></div></div>
+    <div style="margin-top:12px">
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="data"><label>มีไฟล์ข้อมูลดิบ (Raw Data) เก็บไว้อย่างปลอดภัย</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="data"><label>มี Codebook ครบถ้วนตรงกับแบบสอบถาม</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="data"><label>ชื่อตัวแปรใน SPSS/SmartPLS/R ตรงกับ Questionnaire ทุกตัว</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="data"><label>Backup ข้อมูลไว้มากกว่า 1 แหล่ง (Cloud + Local)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="data"><label>ไฟล์ Output ของ SPSS/SmartPLS พร้อมแสดงต่อกรรมการ</label></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== AVIATION ==================== -->
+<div class="tab-panel" id="tab-aviation">
+  <div class="card">
+    <div class="card-header"><span class="icon">✈</span><h2>Aviation Management — จุดที่กรรมการมักถามเป็นพิเศษ<small>Aviation-Specific Checklist</small></h2><div class="progress-pill" id="prog-av">0/7</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-av" style="width:0%"></div></div>
+    <div style="margin-top:12px">
+      <div class="check-item fatal-item" onclick="toggle(this)"><input type="checkbox" data-section="av"><label><span class="tag tag-critical">A1</span> Aviation Context: ไม่ใช่แค่เปลี่ยน Customer → Passenger แต่ต้องมีบริบทการบินชัดเจน (ท่าอากาศยาน/สายการบิน/ความปลอดภัยการบิน)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="av"><label><span class="tag tag-critical">A2</span> ICAO/IATA Relevance: เชื่อมโยงกับ ICAO Standards/IATA Frameworks ได้</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="av"><label><span class="tag tag-critical">A3</span> Industry Applicability: สายการบิน/สนามบิน/Cargo Terminal/Ground Handling นำผลไปใช้ได้จริง</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="av"><label><span class="tag tag-critical">A4</span> Strategic Implication: ผู้บริหารองค์กรการบินจะตัดสินใจอะไรได้จากผลวิจัยนี้</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="av"><label><span class="tag tag-critical">A5</span> Future Trends: เชื่อมโยง AI/Digital Transformation/Sustainability/Smart Airport/Aviation 5.0</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="av"><label><span class="tag tag-critical">A6</span> ESG/Sustainability: ครอบคลุมประเด็น Green Aviation ถ้าเกี่ยวข้อง (สำหรับงาน Scopus 2024–2026)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="av"><label><span class="tag tag-critical">A7</span> Passenger Experience: ถ้าศึกษาผู้โดยสาร ต้องครอบคลุม CX/UX ในบริบทท่าอากาศยานไทย</label></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DEFENSE PREP ==================== -->
+<div class="tab-panel" id="tab-defense">
+  <div class="card">
+    <div class="card-header"><span class="icon">🎤</span><h2>Defense Preparation<small>ความพร้อมก่อนสอบ</small></h2><div class="progress-pill" id="prog-defprep">0/5</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-green" id="bar-defprep" style="width:0%"></div></div>
+    <div style="margin-top:12px">
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="defprep"><label>สไลด์ Defense ครบ นำเสนอได้ภายใน 20 นาที</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="defprep"><label>ฝึกซักซ้อมคำถามกรรมการล่วงหน้า (Mock Defense)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="defprep"><label>พิมพ์เล่มครบตามรูปแบบของสถาบัน</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="defprep"><label>สามารถตอบ 10 คำถามทองได้ (ดูด้านล่าง)</label></div>
+      <div class="check-item" onclick="toggle(this)"><input type="checkbox" data-section="defprep"><label>เตรียม Revision Plan ไว้ล่วงหน้าในกรณีที่ต้องแก้ไข</label></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="icon">🏆</span><h2>10 คำถามทองที่ต้องตอบได้ก่อนสอบ Defense<small>คลิกแต่ละข้อเพื่อทำเครื่องหมายว่าพร้อมแล้ว</small></h2></div>
+    <div class="defense-grid" id="defenseGrid"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="icon">❓</span><h2>6 คำถาม Why ที่ต้องตอบได้ก่อนสอบ Defense</h2></div>
+    <table class="data-table">
+      <thead><tr><th>คำถาม</th><th>สิ่งที่ต้องตอบ</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Why this topic?</strong></td><td>อธิบายที่มาของปัญหา ความสำคัญ และ Research Gap ที่ค้นพบ</td></tr>
+        <tr><td><strong>Why this theory?</strong></td><td>เหตุผลที่เลือกทฤษฎีนี้ ไม่ใช่ทฤษฎีอื่น — เชื่อมกับตัวแปรอย่างไร</td></tr>
+        <tr><td><strong>Why this sample?</strong></td><td>เหตุผลที่เลือกกลุ่มตัวอย่างและพื้นที่เก็บข้อมูลนี้</td></tr>
+        <tr><td><strong>Why this method?</strong></td><td>เหตุผลที่เลือก Quantitative/SEM/PLS-SEM แทนวิธีอื่น</td></tr>
+        <tr><td><strong>Why this statistic?</strong></td><td>เหตุผลที่ใช้สถิตินี้ — เหมาะสมกับ Data Type และ Objective อย่างไร</td></tr>
+        <tr><td><strong>Why should anyone care?</strong></td><td>Contribution ที่ชัดเจน — วงการการบินและผู้บริหารได้อะไร</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== GOLDEN STANDARD ==================== -->
+<div class="tab-panel" id="tab-golden">
+  <div class="alert alert-warning">
+    <span>⭐</span>
+    <span><strong>Golden Checklist ระดับ Scopus Q1 / DBA / PhD</strong><br>ใช้เมื่อต้องการยกระดับจาก 'ผ่านจบ' ไปสู่ 'ตีพิมพ์ระดับนานาชาติ'</span>
+  </div>
+  <div class="card">
+    <div class="card-header"><span class="icon">⭐</span><h2>Golden Standard Checklist<small>Reliability > 0.80 | Scopus Q1–Q2 | Theoretical Contribution</small></h2><div class="progress-pill" id="prog-golden">0/12</div></div>
+    <div class="progress-bar-wrap"><div class="progress-bar pb-yellow" id="bar-golden" style="width:0%"></div></div>
+    <div id="goldenList" style="margin-top:12px"></div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ==================== DATA ====================
+
+const fatal15Data = [
+  { num: 1, title: "Alignment Check", desc: "ทุกส่วนต้องเชื่อมเป็นโซ่เดียว: Problem→Gap→Objectives→RQ→Hypotheses→Framework→Variables→Questionnaire→Analysis→Findings→Conclusions→Recommendations", chain: true },
+  { num: 2, title: "Variable Consistency Check", desc: "ชื่อตัวแปรต้องเหมือนกันทุกบท ห้ามใช้ Service Quality / Perceived SQ / Airport SQ สลับกันโดยไม่อธิบาย กรรมการถามทันที" },
+  { num: 3, title: "Conceptual Framework Audit", desc: "Framework ต้องมีที่มาจริง — ตอบได้ว่ามาจากใคร ปีอะไร ทฤษฎีอะไร เช่น TAM/SERVQUAL/UTAUT/TPB/Resilience Theory" },
+  { num: 4, title: "Research Gap Audit", desc: "Research Gap ไม่ใช่ Literature Review — ต้องตอบได้ 4 คำถาม: What is unknown? / What is inconsistent? / What is missing? / What has never been tested in this context?" },
+  { num: 5, title: "Questionnaire Audit", desc: "ทุกตัวแปรมีข้อคำถาม ทุกมิติครอบคลุม ไม่มีข้อซ้ำ ไม่มี Double-Barreled Question เช่น 'The airport is safe and efficient.' (ถามสองเรื่องในข้อเดียว)" },
+  { num: 6, title: "Sample Adequacy Check", desc: "CB-SEM ต้องการ Sample ≥ 200–400 | PLS-SEM ≥ 100–200 — ห้ามใช้ n=120 กับ SEM โดยไม่มีเหตุผล นักศึกษาชอบใช้สูตรอย่างเดียวแต่ไม่ดู Methodology" },
+  { num: 7, title: "Statistical Assumption Check", desc: "ต้องตรวจก่อนวิเคราะห์ทุกครั้ง: Normality / Outlier / Linearity / Multicollinearity (VIF < 5) / Homoscedasticity / Common Method Bias — นักศึกษาทำ Regression แต่ไม่ตรวจ Assumption" },
+  { num: 8, title: "Instrument Quality Check", desc: "IOC > 0.50 ทุกข้อ → Pilot Test (n=30–50) → Cronbach Alpha > 0.70 → Composite Reliability > 0.70 → AVE > 0.50 → Fornell-Larcker Criterion/HTMT < 0.85" },
+  { num: 9, title: "Citation Consistency Check", desc: "APA 7th Edition ต้องเหมือนกันทุกจุดทั้งเล่ม ห้ามใช้ Smith (2021) / Smith et al., 2021 / Smith and Johnson (2021) ปนกัน — ตรวจทุกรายการ" },
+  { num: 10, title: "Reference Audit", desc: "In-text citation ทุกรายการต้องมีใน Reference List / Reference ทุกรายการต้องถูกอ้างในเนื้อหา ปัญหาคลาสสิก: Reference 120 รายการแต่อ้างในเนื้อหาแค่ 95 รายการ" },
+  { num: 11, title: "Table and Figure Audit", desc: "ทุกตาราง: Table Number + Title + Source | ทุกภาพ: Figure Number + Caption + Source ขาดไม่ได้แม้แต่รายการเดียว — กรรมการจะสังเกตเห็นทันที" },
+  { num: 12, title: "Discussion Quality Audit", desc: "บทที่ 5 ไม่ใช่การสรุปผลจากบทที่ 4 ซ้ำ ต้องตอบ 4 คำถาม: ผลเหมือนใคร? / ผลต่างจากใคร? / เพราะอะไร? / สอดคล้องทฤษฎีใด?" },
+  { num: 13, title: "Contribution Audit", desc: "กรรมการเอกถามแน่นอน 'So What?' ต้องระบุชัดเจน 3 มิติ: Theoretical Contribution / Practical Contribution / Policy Contribution — ไม่ใช่แค่บอกว่างานมีประโยชน์" },
+  { num: 14, title: "Limitation Audit", desc: "ต้องกล้ายอมรับข้อจำกัดจริงๆ เช่น เก็บข้อมูลเฉพาะสนามบินไทย / เฉพาะผู้โดยสาร Full Service Airlines / Cross-sectional Design ไม่ใช่ข้อจำกัดแบบทั่วไปที่ไม่มีความหมาย" },
+  { num: 15, title: "Defense Preparation Audit", desc: "ก่อนสอบต้องตอบได้ทุกข้อ: Why this topic? / Why this theory? / Why this sample? / Why this method? / Why this statistic? / Why should anyone care?" }
+];
+
+const defenseQData = [
+  { q: "Q1", text: "ปัญหาที่ศึกษาคืออะไร? ใครได้รับผลกระทบ?" },
+  { q: "Q2", text: "ทำไมหัวข้อนี้จึงสำคัญในบริบทปัจจุบัน?" },
+  { q: "Q3", text: "งานวิจัยเดิมขาดอะไร? (Research Gap คืออะไร?)" },
+  { q: "Q4", text: "วัตถุประสงค์การวิจัยมีอะไรบ้าง?" },
+  { q: "Q5", text: "ตัวแปรในกรอบแนวคิดมาจากทฤษฎีใด?" },
+  { q: "Q6", text: "ทำไมจึงเลือกกลุ่มตัวอย่างและพื้นที่นี้?" },
+  { q: "Q7", text: "ทำไมจึงใช้สถิติ/วิธีวิจัยนี้?" },
+  { q: "Q8", text: "ผลการวิจัยที่สำคัญที่สุดคืออะไร?" },
+  { q: "Q9", text: "งานวิจัยนี้สร้างองค์ความรู้ใหม่อะไร? (So What?)" },
+  { q: "Q10", text: "วงการการบิน/ผู้บริหาร/นโยบายจะได้ประโยชน์อะไรจากงานนี้?" }
+];
+
+const goldenItems = [
+  "Research Gap มี 3 มิติ: Theoretical + Practical + Methodological",
+  "Literature Review 70%+ เป็นงานวิจัยล่าสุด 3–5 ปีจาก Scopus Q1–Q2",
+  "Conceptual Synthesis เชิงวิเคราะห์ ไม่ใช่ Summary ทีละเรื่อง",
+  "IOC + Pilot Test + Reliability > 0.80 ทุกตัวแปร",
+  "CFA ผ่านเกณฑ์ทุกมิติ (FL, CR, AVE, HTMT, Model Fit)",
+  "Effect Size + Robustness Check + Common Method Bias Test",
+  "Discussion เชื่อมโยงทฤษฎีทุกจุด ไม่ใช่แค่รายงานผล",
+  "Theoretical Contribution ชัดเจน (ขยาย/ปรับ/พัฒนาทฤษฎีใด)",
+  "Practical + Policy Contribution เฉพาะเจาะจง นำไปใช้ได้จริง",
+  "Future Research Agenda ที่มีทิศทางและเป็นไปได้",
+  "เชื่อมโยงกับ ESG / AI / Digital Transformation / Aviation 5.0",
+  "APA 7th Edition สมบูรณ์แบบ 100%"
+];
+
+const chainSteps = [
+  "Problem Statement","Research Gap","Objectives","Research Questions",
+  "Hypotheses","Conceptual Framework","Variables","Questionnaire Items",
+  "Statistical Analysis","Findings / Results","Discussion","Conclusions","Recommendations"
+];
+
+// ==================== RENDER ====================
+
+function renderFatal15() {
+  const grid = document.getElementById('fatal15Grid');
+  grid.innerHTML = fatal15Data.map((f,i) => `
+    <div class="fatal-card" id="fcard-${f.num}">
+      <div class="fatal-num">จุดที่ ${f.num} / 15</div>
+      <div class="fatal-title">${f.title}</div>
+      <div class="fatal-desc">${f.desc}</div>
+      <label style="display:flex;align-items:center;gap:6px;margin-top:8px;cursor:pointer;font-size:12px;font-weight:600">
+        <input type="checkbox" data-section="fatal15" data-idx="${f.num}" onchange="fatalToggle(this)" style="accent-color:var(--success);width:15px;height:15px">
+        ✅ แก้ไขแล้ว / ผ่านแล้ว
+      </label>
+    </div>
+  `).join('');
+}
+
+function renderDefenseGrid() {
+  const grid = document.getElementById('defenseGrid');
+  grid.innerHTML = defenseQData.map((d,i) => `
+    <div class="q-card" id="qcard-${i}">
+      <div class="q-num">${d.q}</div>
+      <div style="font-size:13px;font-weight:600;padding-top:2px">${d.text}</div>
+      <button class="q-ready not-ready" onclick="toggleDefense(this,${i})" id="qbtn-${i}">
+        ❌ ยังไม่พร้อม
+      </button>
+    </div>
+  `).join('');
+}
+
+function renderGolden() {
+  const list = document.getElementById('goldenList');
+  list.innerHTML = goldenItems.map((item, i) => `
+    <div class="golden-item" onclick="toggleGolden(this)">
+      <input type="checkbox" data-section="golden">
+      <label><span class="star-icon">✦</span> ${item}</label>
+    </div>
+  `).join('');
+}
+
+function renderChain() {
+  const wrap = document.getElementById('chainWrap');
+  wrap.innerHTML = chainSteps.map((s, i) => `
+    <div class="chain-step">
+      <div class="chain-box" id="cbox-${i}">${s}</div>
+      ${i < chainSteps.length-1 ? '<div class="chain-arrow">↓</div>' : ''}
+    </div>
+    ${i < chainSteps.length-1 ? '<div style="width:2px;height:0"></div>' : ''}
+  `).join('');
+}
+
+// ==================== TOGGLE ====================
+
+function toggle(item) {
+  const cb = item.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  item.classList.toggle('checked', cb.checked);
+  updateAll();
+}
+
+function fatalToggle(cb) {
+  const idx = cb.dataset.idx;
+  const card = document.getElementById('fcard-'+idx);
+  card.classList.toggle('cleared', cb.checked);
+  updateAll();
+}
+
+function toggleDefense(btn, i) {
+  const isReady = btn.classList.contains('not-ready');
+  btn.classList.toggle('not-ready', !isReady);
+  btn.classList.toggle('ready', isReady);
+  btn.textContent = isReady ? '✅ พร้อมแล้ว' : '❌ ยังไม่พร้อม';
+  updateAll();
+}
+
+function toggleGolden(item) {
+  const cb = item.querySelector('input');
+  cb.checked = !cb.checked;
+  item.classList.toggle('checked', cb.checked);
+  updateAll();
+}
+
+// ==================== SCORING ====================
+
+function countSection(section) {
+  const all = document.querySelectorAll(`input[data-section="${section}"]`);
+  const checked = document.querySelectorAll(`input[data-section="${section}"]:checked`);
+  return { total: all.length, checked: checked.length };
+}
+
+function pct(checked, total) { return total ? Math.round(checked/total*100) : 0; }
+
+function updateBar(barId, progId, checked, total) {
+  const p = pct(checked, total);
+  const bar = document.getElementById(barId);
+  const prog = document.getElementById(progId);
+  if (bar) {
+    bar.style.width = p+'%';
+    bar.className = 'progress-bar ' + (p>=80?'pb-green':p>=50?'pb-yellow':'pb-red');
+  }
+  if (prog) prog.textContent = checked+'/'+total;
+}
+
+function updateAll() {
+  // Chapter scores
+  const sections = ['ch1','ch2','ch3','ch4','ch5'];
+  let chTotal=0, chChecked=0;
+  sections.forEach(s => {
+    const c = countSection(s);
+    chTotal += c.total; chChecked += c.checked;
+    updateBar('bar-'+s,'prog-'+s,c.checked,c.total);
+  });
+
+  // Fatal15
+  const f15 = document.querySelectorAll('#fatal15Grid input[type="checkbox"]');
+  const f15c = document.querySelectorAll('#fatal15Grid input[type="checkbox"]:checked');
+  updateBar(null,'badge-fatal15',f15c.length,f15.length);
+  document.getElementById('badge-fatal15').textContent = f15c.length+'/15';
+
+  // UoA
+  const uoa = countSection('uoa');
+  updateBar('bar-uoa','prog-uoa',uoa.checked,uoa.total);
+
+  // TV
+  const tv = countSection('tv');
+  updateBar('bar-tv','prog-tv',tv.checked,tv.total);
+
+  // Ethics
+  const eth = countSection('ethics');
+  updateBar('bar-ethics','prog-ethics',eth.checked,eth.total);
+  const ai = countSection('ai');
+  updateBar('bar-ai','prog-ai',ai.checked,ai.total);
+  const data = countSection('data');
+  updateBar('bar-data','prog-data',data.checked,data.total);
+
+  // Aviation
+  const av = countSection('av');
+  updateBar('bar-av','prog-av',av.checked,av.total);
+
+  // Defense prep
+  const dp = countSection('defprep');
+  updateBar('bar-defprep','prog-defprep',dp.checked,dp.total);
+
+  // Defense questions
+  const dReady = document.querySelectorAll('.q-ready.ready').length;
+
+  // Golden
+  const golden = countSection('golden');
+  updateBar('bar-golden','prog-golden',golden.checked,golden.total);
+
+  // Chapter badges
+  document.getElementById('badge-chapters').textContent = pct(chChecked,chTotal)+'%';
+
+  // Weighted score calculation
+  const w1 = pct(chChecked, chTotal) * 0.30;
+  const errTotal = f15.length + uoa.total + tv.total;
+  const errChecked = f15c.length + uoa.checked + tv.checked;
+  const w2 = pct(errChecked, errTotal) * 0.20;
+  // Research coherence from ch1+ch2 alignment items
+  const alignItems = document.querySelectorAll('input[data-section="ch1"], input[data-section="ch2"]');
+  const alignChecked = document.querySelectorAll('input[data-section="ch1"]:checked, input[data-section="ch2"]:checked');
+  const w3 = pct(alignChecked.length, alignItems.length) * 0.25;
+  // Methodology from ch3+ch4 stats items
+  const methItems = document.querySelectorAll('input[data-section="ch3"], input[data-section="ch4"]');
+  const methChecked = document.querySelectorAll('input[data-section="ch3"]:checked, input[data-section="ch4"]:checked');
+  const w4 = pct(methChecked.length, methItems.length) * 0.15;
+  const w5 = (dReady/10*100) * 0.10;
+  const total = Math.round(w1+w2+w3+w4+w5);
+
+  // Update displays
+  document.getElementById('headerScore').textContent = total;
+  document.getElementById('ringScore').textContent = total;
+  document.getElementById('w1').textContent = Math.round(w1);
+  document.getElementById('w2').textContent = Math.round(w2);
+  document.getElementById('w3').textContent = Math.round(w3);
+  document.getElementById('w4').textContent = Math.round(w4);
+  document.getElementById('w5').textContent = Math.round(w5);
+
+  // Ring
+  const circ = 364.4;
+  const offset = circ - (total/100)*circ;
+  document.getElementById('ringCircle').style.strokeDashoffset = offset;
+  document.getElementById('ringCircle').style.stroke = total>=80?'#27ae60':total>=60?'#f39c12':'#e74c3c';
+
+  // Stats
+  const allCb = document.querySelectorAll('.tab-panel input[type="checkbox"]');
+  const allChecked = document.querySelectorAll('.tab-panel input[type="checkbox"]:checked');
+  document.getElementById('statTotal').textContent = allChecked.length+'/'+allCb.length;
+  document.getElementById('barTotal').style.width = pct(allChecked.length,allCb.length)+'%';
+  document.getElementById('statFatal').textContent = f15c.length+'/15';
+  document.getElementById('barFatal').style.width = pct(f15c.length,15)+'%';
+  const uoatvPct = pct(uoa.checked+tv.checked, uoa.total+tv.total);
+  document.getElementById('statUoA').textContent = uoatvPct+'%';
+  document.getElementById('barUoA').style.width = uoatvPct+'%';
+  document.getElementById('statDefense').textContent = dReady+'/10';
+  document.getElementById('barDefense').style.width = (dReady/10*100)+'%';
+
+  // Chain
+  updateChain(total);
+
+  // Fatal alert box
+  updateFatalAlerts(f15c.length);
+}
+
+function updateChain(score) {
+  const filled = Math.round(chainSteps.length * score/100);
+  chainSteps.forEach((s,i) => {
+    const box = document.getElementById('cbox-'+i);
+    if (box) box.classList.toggle('filled', i < filled);
+  });
+  const chainAlert = document.getElementById('chainAlert');
+  if (chainAlert) chainAlert.style.display = score < 60 ? 'flex' : 'none';
+}
+
+function updateFatalAlerts(clearedCount) {
+  const box = document.getElementById('fatalAlertBox');
+  const remaining = 15 - clearedCount;
+  if (remaining > 0) {
+    box.innerHTML = `<div class="alert alert-danger"><span>💀</span><span>ยังมี <strong>${remaining} จุดตาย</strong> ที่ยังไม่ได้แก้ไข — ไปที่แท็บ "15 จุดตาย" เพื่อตรวจสอบ</span></div>`;
+  } else {
+    box.innerHTML = `<div class="alert alert-success"><span>✅</span><span>ผ่านทั้ง 15 จุดตายแล้ว — งานวิจัยของคุณผ่านจุดวิกฤตที่สำคัญที่สุด!</span></div>`;
+  }
+}
+
+// ==================== TABS ====================
+
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-'+tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ==================== INIT ====================
+renderFatal15();
+renderDefenseGrid();
+renderGolden();
+renderChain();
+updateAll();
+</script>
+</body>
+</html>
