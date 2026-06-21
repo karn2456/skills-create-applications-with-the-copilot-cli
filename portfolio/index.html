@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCiAP Portfolio - Our Trusted Clients & Success Stories</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #d69e2e;
+            --text-color: #2d3748;
+            --bg-light: #f7fafc;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .stat-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        /* Clients Section */
+        .client-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+        .client-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        /* Testimonials Section */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .testimonial-card {
+            background: #fff;
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .quote {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+        .role {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- สถิติความสำเร็จ -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">25+</div>
+                <div>ปีแห่งประสบการณ์</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">350,000+</div>
+                <div>ข้อสอบฝึกหัดในคลัง</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div>มาตรฐานหลัก (TOEIC/TOEFL/IELTS/CU-Tep)</div>
+            </div>
+        </div>
+
+        <!-- รายชื่อองค์กรพันธมิตร -->
+        <h2>องค์กรชั้นนำที่ไว้วางใจ TCiAP</h2>
+        <div class="client-grid">
+            <div class="client-item">Yamaha</div>
+            <div class="client-item">Panasonic</div>
+            <div class="client-item">Nissan</div>
+            <div class="client-item">PTT</div>
+            <div class="client-item">SCG</div>
+            <div class="client-item">Chevron</div>
+            <div class="client-item">Schlumberger</div>
+            <div class="client-item">Kubota</div>
+            <div class="client-item">Toyota Boshoku</div>
+            <div class="client-item">Thai Summit Group</div>
+            <div class="client-item">EXIM Bank</div>
+            <div class="client-item">SET</div>
+        </div>
+
+        <!-- รีวิวจากผู้เรียนจริง -->
+        <h2>เสียงสะท้อนจากผู้เรียนสำเร็จ</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="quote">"TCiAP เปลี่ยนแปลงคะแนน TOEIC ของทีมงานเราอย่างเห็นได้ชัด พนักงานส่วนใหญ่ผ่านเกณฑ์ที่บริษัทกำหนดภายใน 3 เดือน"</p>
+                <div class="author">คุณสมชาย วงศ์กิตติ</div>
+                <div class="role">HR Manager, บริษัทผลิตชิ้นส่วนยานยนต์</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"เรียน IELTS กับ TCiAP แล้วได้ Band 7.5 ในครั้งแรก เกินเป้าหมายที่ตั้งไว้มาก แนะนำสำหรับคนอยากต่อต่างประเทศค่ะ"</p>
+                <div class="author">คุณปิยะนุช รัตนศรี</div>
+                <div class="role">นักศึกษาระดับบัณฑิตศึกษา</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"ช่วยเตรียมสอบ CU-Tep ให้ผ่านเกณฑ์จบการศึกษาได้ในเวลาจำกัด เทคนิคในข้อสอบนำไปใช้ได้ผลจริง"</p>
+                <div class="author">คุณกานต์ ธีรวัฒน์</div>
+                <div class="role">นิสิตคณะวิศวกรรมศาสตร์ จุฬาฯ</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
