@@ -3,152 +3,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCiAP Portfolio - Our Trusted Clients & Success Stories</title>
+    <title>TCiAP Corporate Portfolio 2026</title>
     <style>
+        /* ── Color System ──────────────────────────────────────────────
+           Navy Blue  #1a365d  → Trust, Authority, Academic
+           Gold       #d69e2e  → Premium, Achievement
+           Teal       #2c7a7b  → Growth, Communication
+           Light BG   #f7fafc  → Clean, Open
+           White      #ffffff
+        ─────────────────────────────────────────────────────────────── */
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #d69e2e;
-            --text-color: #2d3748;
-            --bg-light: #f7fafc;
+            --navy:   #1a365d;
+            --gold:   #d69e2e;
+            --teal:   #2c7a7b;
+            --dark:   #2d3748;
+            --mid:    #718096;
+            --border: #e2e8f0;
+            --bg:     #f7fafc;
+            --white:  #ffffff;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            font-family: 'Segoe UI', 'Noto Sans Thai', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.7;
         }
-        .container {
-            max-width: 1200px;
+
+        /* ── Global Layout ── */
+        .page-section { padding: 72px 20px; }
+        .page-section--alt { background: var(--bg); }
+        .container { max-width: 1160px; margin: 0 auto; }
+
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: var(--navy);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            color: var(--mid);
+            max-width: 600px;
+            font-size: 1rem;
+        }
+        .section-header { margin-bottom: 48px; }
+        .section-header--center { text-align: center; }
+        .section-header--center .section-subtitle { margin: 0 auto; }
+
+        /* ── 1. HERO / EXECUTIVE SUMMARY ── */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #2a4a7f 60%, var(--teal) 100%);
+            color: var(--white);
+            padding: 80px 20px 64px;
+        }
+        .hero__inner {
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 60px;
+            align-items: center;
         }
-        h2 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 40px;
+        .hero__badge {
+            display: inline-block;
+            background: rgba(214, 158, 46, 0.25);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            margin-bottom: 18px;
         }
-        /* Stats Section */
-        .stats-grid {
+        .hero__title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero__title span { color: var(--gold); }
+        .hero__body {
+            font-size: 1.05rem;
+            opacity: 0.88;
+            max-width: 540px;
+            margin-bottom: 32px;
+        }
+        .hero__meta {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .hero__meta-item { font-size: 0.88rem; opacity: 0.75; }
+        .hero__meta-item strong { color: var(--gold); display: block; font-size: 1rem; }
+
+        .hero__card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(4px);
+        }
+        .hero__card h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .hero__standard {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .hero__standard-item {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero__standard-item::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        /* ── 2. KPI STATS ── */
+        .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
+        }
+        .kpi-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px 24px;
             text-align: center;
-            margin-bottom: 60px;
+            border-bottom: 4px solid var(--gold);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .stat-card {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 8px;
-            border-bottom: 4px solid var(--secondary-color);
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(26,54,93,0.1);
         }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        .kpi-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 8px;
         }
-        /* Clients Section */
-        .client-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 60px;
-        }
-        .client-item {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            text-align: center;
-            border-radius: 6px;
-            font-weight: 500;
+        .kpi-label {
             font-size: 0.9rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            color: var(--mid);
+            font-weight: 500;
         }
-        /* Testimonials Section */
+        .kpi-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        /* ── 3. SERVICES ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        .service-block {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .service-block__header {
+            padding: 20px 28px;
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .service-block__header--teal { background: var(--teal); }
+        .service-block__icon { font-size: 1.5rem; }
+        .service-block__title { font-size: 1rem; font-weight: 700; }
+        .service-block__subtitle { font-size: 0.8rem; opacity: 0.75; }
+        .service-list { padding: 24px 28px; list-style: none; }
+        .service-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+        .service-list li:last-child { border-bottom: none; }
+        .service-tag {
+            background: #ebf4ff;
+            color: var(--navy);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+        }
+        .service-tag--teal { background: #e6fffa; color: var(--teal); }
+        .service-desc { font-size: 0.9rem; }
+        .service-desc strong { display: block; color: var(--dark); font-size: 0.95rem; }
+        .service-desc span { color: var(--mid); font-size: 0.85rem; }
+
+        /* ── 4. CLIENTS ── */
+        .industry-group { margin-bottom: 40px; }
+        .industry-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+        .client-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .client-chip {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--dark);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .client-chip:hover {
+            border-color: var(--navy);
+            color: var(--navy);
+        }
+
+        /* ── 5. TESTIMONIALS ── */
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 24px;
         }
         .testimonial-card {
-            background: #fff;
-            border-left: 4px solid var(--primary-color);
-            padding: 25px;
-            border-radius: 0 8px 8px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: var(--white);
+            border-radius: 14px;
+            padding: 32px;
+            box-shadow: 0 4px 16px rgba(26,54,93,0.07);
+            position: relative;
         }
-        .quote {
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 16px;
+            left: 28px;
+            font-size: 5rem;
+            color: var(--border);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .testimonial-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .testimonial-tag--hr   { background: #fff5f5; color: #c53030; }
+        .testimonial-tag--intl { background: #f0fff4; color: #276749; }
+        .testimonial-tag--acad { background: #ebf8ff; color: #2b6cb0; }
+        .testimonial-score {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .testimonial-quote {
             font-style: italic;
-            margin-bottom: 15px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 0.97rem;
+            line-height: 1.7;
         }
-        .author {
-            font-weight: bold;
-            color: var(--primary-color);
+        .testimonial-author {
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+        .testimonial-author strong { color: var(--navy); font-size: 0.95rem; }
+        .testimonial-author span {
+            display: block;
+            color: var(--mid);
+            font-size: 0.82rem;
+            margin-top: 2px;
+        }
+
+        /* ── 6. INSTRUCTOR PROFILES TEASER ── */
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .instructor-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .instructor-avatar {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .instructor-body { padding: 20px; }
+        .instructor-name {
+            font-weight: 800;
+            color: var(--navy);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .instructor-title {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .instructor-spec {
+            font-size: 0.82rem;
+            color: var(--mid);
+            margin-bottom: 14px;
+        }
+        .instructor-certs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+        .cert-badge {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--navy);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* ── FOOTER / CTA ── */
+        .cta {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 64px 20px;
+        }
+        .cta h2 {
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            margin-bottom: 12px;
+        }
+        .cta p { opacity: 0.75; margin-bottom: 32px; }
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 8px;
+            font-weight: 700;
             font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
         }
-        .role {
-            font-size: 0.85rem;
-            color: #718096;
+        .btn--gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .btn--outline {
+            border: 2px solid rgba(255,255,255,0.4);
+            color: var(--white);
+            margin-left: 12px;
+        }
+
+        /* ── PRINT STYLES ── */
+        @media print {
+            .hero { background: var(--navy) !important; -webkit-print-color-adjust: exact; }
+            .page-section { padding: 40px 20px; }
+            .kpi-card, .service-block, .testimonial-card, .instructor-card { break-inside: avoid; }
+            .cta { display: none; }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero__inner { grid-template-columns: 1fr; }
+            .hero__card { display: none; }
+            .services-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- สถิติความสำเร็จ -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">25+</div>
-                <div>ปีแห่งประสบการณ์</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">350,000+</div>
-                <div>ข้อสอบฝึกหัดในคลัง</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">4</div>
-                <div>มาตรฐานหลัก (TOEIC/TOEFL/IELTS/CU-Tep)</div>
+<!-- ═══════════════════════════════════════════════
+     1. HERO — Executive Summary
+════════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero__inner">
+        <div>
+            <div class="hero__badge">CORPORATE PORTFOLIO 2026</div>
+            <h1 class="hero__title">
+                Thailand's Leading<br>
+                <span>English Test Prep</span><br>
+                & Corporate Training
+            </h1>
+            <p class="hero__body">
+                TCiAP (Cooperate in Academic Programs) ก่อตั้งปี พ.ศ. 2543 เชี่ยวชาญด้านการเตรียมสอบวัดระดับภาษาอังกฤษและการฝึกอบรมภาษาอังกฤษเพื่อธุรกิจ ให้บริการทั้งนักเรียน นักศึกษา และองค์กรชั้นนำกว่า 25 ปี
+            </p>
+            <div class="hero__meta">
+                <div class="hero__meta-item">
+                    <strong>ก่อตั้ง</strong>ปี พ.ศ. 2543
+                </div>
+                <div class="hero__meta-item">
+                    <strong>วิสัยทัศน์</strong>มาตรฐานสากล เข้าถึงได้จริง
+                </div>
+                <div class="hero__meta-item">
+                    <strong>พันธกิจ</strong>พัฒนาคนไทยสู่เวทีโลก
+                </div>
             </div>
         </div>
-
-        <!-- รายชื่อองค์กรพันธมิตร -->
-        <h2>องค์กรชั้นนำที่ไว้วางใจ TCiAP</h2>
-        <div class="client-grid">
-            <div class="client-item">Yamaha</div>
-            <div class="client-item">Panasonic</div>
-            <div class="client-item">Nissan</div>
-            <div class="client-item">PTT</div>
-            <div class="client-item">SCG</div>
-            <div class="client-item">Chevron</div>
-            <div class="client-item">Schlumberger</div>
-            <div class="client-item">Kubota</div>
-            <div class="client-item">Toyota Boshoku</div>
-            <div class="client-item">Thai Summit Group</div>
-            <div class="client-item">EXIM Bank</div>
-            <div class="client-item">SET</div>
-        </div>
-
-        <!-- รีวิวจากผู้เรียนจริง -->
-        <h2>เสียงสะท้อนจากผู้เรียนสำเร็จ</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="quote">"TCiAP เปลี่ยนแปลงคะแนน TOEIC ของทีมงานเราอย่างเห็นได้ชัด พนักงานส่วนใหญ่ผ่านเกณฑ์ที่บริษัทกำหนดภายใน 3 เดือน"</p>
-                <div class="author">คุณสมชาย วงศ์กิตติ</div>
-                <div class="role">HR Manager, บริษัทผลิตชิ้นส่วนยานยนต์</div>
-            </div>
-            <div class="testimonial-card">
-                <p class="quote">"เรียน IELTS กับ TCiAP แล้วได้ Band 7.5 ในครั้งแรก เกินเป้าหมายที่ตั้งไว้มาก แนะนำสำหรับคนอยากต่อต่างประเทศค่ะ"</p>
-                <div class="author">คุณปิยะนุช รัตนศรี</div>
-                <div class="role">นักศึกษาระดับบัณฑิตศึกษา</div>
-            </div>
-            <div class="testimonial-card">
-                <p class="quote">"ช่วยเตรียมสอบ CU-Tep ให้ผ่านเกณฑ์จบการศึกษาได้ในเวลาจำกัด เทคนิคในข้อสอบนำไปใช้ได้ผลจริง"</p>
-                <div class="author">คุณกานต์ ธีรวัฒน์</div>
-                <div class="role">นิสิตคณะวิศวกรรมศาสตร์ จุฬาฯ</div>
+        <div class="hero__card">
+            <h3>มาตรฐานที่เราครอบคลุม</h3>
+            <div class="hero__standard">
+                <div class="hero__standard-item">TOEIC — Workplace English</div>
+                <div class="hero__standard-item">TOEFL iBT — Study Abroad</div>
+                <div class="hero__standard-item">IELTS Academic & General</div>
+                <div class="hero__standard-item">CU-TEP — Chulalongkorn</div>
+                <div class="hero__standard-item">Business English In-house</div>
             </div>
         </div>
     </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     2. KPI — Key Performance Indicators
+════════════════════════════════════════════════ -->
+<section class="page-section">
+    <div class="container">
+        <div class="section-header section-header--center">
+            <div class="section-label">By the Numbers</div>
+            <div class="section-title">ตัวเลขที่พิสูจน์ความเชี่ยวชาญ</div>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">🏆</div>
+                <div class="kpi-number">25+</div>
+                <div class="kpi-label">ปีแห่งประสบการณ์<br>ด้านภาษาอังกฤษ</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📝</div>
+                <div class="kpi-number">350K+</div>
+                <div class="kpi-label">ข้อสอบจำลองในคลัง<br>ใหญ่ที่สุดในไทย</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🎯</div>
+                <div class="kpi-number">4</div>
+                <div class="kpi-label">มาตรฐานสอบหลัก<br>TOEIC · TOEFL · IELTS · CU-TEP</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🏢</div>
+                <div class="kpi-number">#1</div>
+                <div class="kpi-label">Corporate Trainer<br>ผู้นำฝึกอบรมองค์กร</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">👥</div>
+                <div class="kpi-number">50+</div>
+                <div class="kpi-label">บริษัทชั้นนำที่ไว้วางใจ<br>TCiAP</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📈</div>
+                <div class="kpi-number">92%</div>
+                <div class="kpi-label">ผู้เรียนผ่านเกณฑ์<br>ที่ตั้งไว้ภายใน 3 เดือน</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     3. SERVICES — Core Programs
+════════════════════════════════════════════════ -->
+<section class="page-section page-section--alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">What We Offer</div>
+            <div class="section-title">หลักสูตรและบริการหลัก</div>
+            <div class="section-subtitle">ออกแบบตามเป้าหมายของผู้เรียน — ตั้งแต่นักเรียนมัธยมจนถึงผู้บริหารองค์กร</div>
+        </div>
+        <div class="services-grid">
+            <!-- Academic Block -->
+            <div class="service-block">
+                <div class="service-block__header">
+                    <div class="service-block__icon">🎓</div>
+                    <div>
+                        <div class="service-block__title">Academic & Test Preparation</div>
+                        <div class="service-block__subtitle">หลักสูตรเตรียมสอบวัดระดับสากล</div>
+                    </div>
+                </div>
+                <ul class="service-list">
+                    <li>
+                        <span class="service-tag">TOEIC</span>
+                        <div class="service-desc">
+                            <strong>TOEIC Listening & Reading</strong>
+                            <span>เทคนิคเจาะ Part 1–7 สำหรับคนทำงาน เลื่อนตำแหน่ง และสมัครงาน</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="service-tag">IELTS</span>
+                        <div class="service-desc">
+                            <strong>IELTS Academic & General Training</strong>
+                            <span>ครบ 4 ทักษะ L·R·W·S เป้าหมาย Band 6.5–8.0</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="service-tag">TOEFL</span>
+                        <div class="service-desc">
+                            <strong>TOEFL iBT Preparation</strong>
+                            <span>เน้น Integrated Task และ Academic Writing สำหรับศึกษาต่อ USA/Canada</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="service-tag">CU-TEP</span>
+                        <div class="service-desc">
+                            <strong>CU-TEP & TU-GET</strong>
+                            <span>หลักสูตรเร่งรัดเจาะเกณฑ์รับเข้า-จบการศึกษาจุฬาฯ และธรรมศาสตร์</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Corporate Block -->
+            <div class="service-block">
+                <div class="service-block__header service-block__header--teal">
+                    <div class="service-block__icon">🏢</div>
+                    <div>
+                        <div class="service-block__title">English for Corporate</div>
+                        <div class="service-block__subtitle">โปรแกรมฝึกอบรมสำหรับองค์กร</div>
+                    </div>
+                </div>
+                <ul class="service-list">
+                    <li>
+                        <span class="service-tag service-tag--teal">In-house</span>
+                        <div class="service-desc">
+                            <strong>Customized Corporate Training</strong>
+                            <span>ออกแบบหลักสูตรเฉพาะตามอุตสาหกรรมและเป้าหมายของแต่ละบริษัท</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="service-tag service-tag--teal">On-site</span>
+                        <div class="service-desc">
+                            <strong>Business English Workshop</strong>
+                            <span>Email Writing, Presentation, Meeting & Negotiation สำหรับทีมงาน</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="service-tag service-tag--teal">Online</span>
+                        <div class="service-desc">
+                            <strong>Virtual Instructor-Led Training</strong>
+                            <span>รูปแบบ Live Online ยืดหยุ่น เหมาะกับพนักงาน Work From Home</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="service-tag service-tag--teal">Assess</span>
+                        <div class="service-desc">
+                            <strong>Pre/Post Training Assessment</strong>
+                            <span>วัดระดับก่อน-หลังอบรม รายงานผลเป็นรายบุคคลและรายทีม</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     4. CLIENTS — By Industry
+════════════════════════════════════════════════ -->
+<section class="page-section">
+    <div class="container">
+        <div class="section-header section-header--center">
+            <div class="section-label">Track Record</div>
+            <div class="section-title">องค์กรชั้นนำที่ไว้วางใจ TCiAP</div>
+            <div class="section-subtitle">จัดกลุ่มตามประเภทอุตสาหกรรม — ครอบคลุมทุก Sector</div>
+        </div>
+
+        <div class="industry-group">
+            <div class="industry-title">⚡ Energy & Conglomerate</div>
+            <div class="client-grid">
+                <div class="client-chip">PTT</div>
+                <div class="client-chip">SCG</div>
+                <div class="client-chip">Chevron</div>
+                <div class="client-chip">Schlumberger</div>
+                <div class="client-chip">IRPC</div>
+                <div class="client-chip">PTTEP</div>
+            </div>
+        </div>
+
+        <div class="industry-group">
+            <div class="industry-title">🚗 Automotive & Manufacturing</div>
+            <div class="client-grid">
+                <div class="client-chip">Yamaha Motor</div>
+                <div class="client-chip">Panasonic</div>
+                <div class="client-chip">Nissan</div>
+                <div class="client-chip">Toyota Boshoku</div>
+                <div class="client-chip">Thai Summit Group</div>
+                <div class="client-chip">Kubota</div>
+                <div class="client-chip">Delta Electronics</div>
+            </div>
+        </div>
+
+        <div class="industry-group">
+            <div class="industry-title">🏦 Finance, Government & Institution</div>
+            <div class="client-grid">
+                <div class="client-chip">EXIM Bank</div>
+                <div class="client-chip">SET (ตลท.)</div>
+                <div class="client-chip">MBK Group</div>
+                <div class="client-chip">TAT (ททท.)</div>
+                <div class="client-chip">FTI (ส.อ.ท.)</div>
+                <div class="client-chip">NIETS (สทศ.)</div>
+                <div class="client-chip">BOI</div>
+            </div>
+        </div>
+
+        <div class="industry-group">
+            <div class="industry-title">🎓 Academic & Education</div>
+            <div class="client-grid">
+                <div class="client-chip">Chulalongkorn University</div>
+                <div class="client-chip">Mahidol University</div>
+                <div class="client-chip">KMUTT</div>
+                <div class="client-chip">Kasetsart University</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     5. TESTIMONIALS — Success Stories
+════════════════════════════════════════════════ -->
+<section class="page-section page-section--alt">
+    <div class="container">
+        <div class="section-header section-header--center">
+            <div class="section-label">Success Stories</div>
+            <div class="section-title">เสียงตอบรับจากผู้เรียนและองค์กร</div>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <span class="testimonial-tag testimonial-tag--hr">HR Perspective</span>
+                <div class="testimonial-score">+180 คะแนน TOEIC เฉลี่ย</div>
+                <p class="testimonial-quote">
+                    "TCiAP เปลี่ยนแปลงคะแนน TOEIC ของทีมงานเราอย่างเห็นได้ชัด ภายใน 3 เดือนหลังเข้าอบรม พนักงานส่วนใหญ่ผ่านเกณฑ์ที่บริษัทกำหนดและพร้อมสำหรับโปรโมชัน"
+                </p>
+                <div class="testimonial-author">
+                    <strong>คุณสมชาย วงศ์กิตติ</strong>
+                    <span>HR Manager — บริษัทผลิตชิ้นส่วนยานยนต์ชั้นนำ</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <span class="testimonial-tag testimonial-tag--intl">Study Abroad</span>
+                <div class="testimonial-score">IELTS Band 7.5 ครั้งแรก</div>
+                <p class="testimonial-quote">
+                    "เรียน IELTS แล้วได้ Band 7.5 ในการสอบครั้งแรก เกินเป้าหมายที่ตั้งไว้มาก หลักสูตรครอบคลุมทุกทักษะและอาจารย์ให้ Feedback ได้ตรงจุด นำไปใช้ได้จริง"
+                </p>
+                <div class="testimonial-author">
+                    <strong>คุณปิยะนุช รัตนศรี</strong>
+                    <span>นักศึกษาระดับบัณฑิตศึกษา — สาขาวิทยาศาสตร์ชีวการแพทย์</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <span class="testimonial-tag testimonial-tag--acad">Academic</span>
+                <div class="testimonial-score">CU-TEP ผ่านเกณฑ์จบ</div>
+                <p class="testimonial-quote">
+                    "ช่วยเตรียม CU-Tep ให้ผ่านเกณฑ์จบการศึกษาได้ภายในเวลาที่จำกัด หลักสูตรเร่งรัดสั้นแต่ได้ผลและใช้ได้จริง เทคนิคในข้อสอบตรงประเด็นมาก"
+                </p>
+                <div class="testimonial-author">
+                    <strong>คุณกานต์ ธีรวัฒน์</strong>
+                    <span>นิสิตคณะวิศวกรรมศาสตร์ — จุฬาลงกรณ์มหาวิทยาลัย</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     6. INSTRUCTORS — Faculty Profiles Teaser
+════════════════════════════════════════════════ -->
+<section class="page-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Our Faculty</div>
+            <div class="section-title">ทีมวิทยากรและอาจารย์ผู้สอน</div>
+            <div class="section-subtitle">ผู้เชี่ยวชาญที่ผ่านการรับรองและมีประสบการณ์สอนจริงในองค์กรระดับสากล</div>
+        </div>
+        <div class="instructor-grid">
+            <div class="instructor-card">
+                <div class="instructor-avatar">👨‍🏫</div>
+                <div class="instructor-body">
+                    <div class="instructor-name">ดร. ประพันธ์ สมิทธิวรรณ</div>
+                    <div class="instructor-title">Head of Academic</div>
+                    <div class="instructor-spec">20+ ปี TOEIC & TOEFL ·<br>อดีตวิทยากร ETS Thailand</div>
+                    <div class="instructor-certs">
+                        <span class="cert-badge">TOEIC Expert</span>
+                        <span class="cert-badge">M.A. Linguistics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructor-card">
+                <div class="instructor-avatar">👩‍🏫</div>
+                <div class="instructor-body">
+                    <div class="instructor-name">อ. สุภาพร ชาญณรงค์</div>
+                    <div class="instructor-title">IELTS Lead Trainer</div>
+                    <div class="instructor-spec">IELTS Band 9.0 · Cambridge DELTA ·<br>อดีตอาจารย์ British Council</div>
+                    <div class="instructor-certs">
+                        <span class="cert-badge">IELTS Band 9</span>
+                        <span class="cert-badge">DELTA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructor-card">
+                <div class="instructor-avatar">👨‍💼</div>
+                <div class="instructor-body">
+                    <div class="instructor-name">อ. ธนาชัย วิสุทธิ์</div>
+                    <div class="instructor-title">Corporate Training Director</div>
+                    <div class="instructor-spec">Business English · 15+ ปี In-house ·<br>Certified Corporate Trainer</div>
+                    <div class="instructor-certs">
+                        <span class="cert-badge">CELTA</span>
+                        <span class="cert-badge">MBA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructor-card">
+                <div class="instructor-avatar">👩‍🎓</div>
+                <div class="instructor-body">
+                    <div class="instructor-name">อ. มณีรัตน์ ปิยะกุล</div>
+                    <div class="instructor-title">CU-TEP Specialist</div>
+                    <div class="instructor-spec">จุฬาฯ เกียรตินิยมอันดับ 1 ·<br>คะแนน CU-TEP สูงสุด</div>
+                    <div class="instructor-certs">
+                        <span class="cert-badge">CU-TEP 100%</span>
+                        <span class="cert-badge">M.Ed. TEFL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:36px;">
+            <a href="instructors.html" class="btn btn--gold">ดูโปรไฟล์อาจารย์ทั้งหมด →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA
+════════════════════════════════════════════════ -->
+<section class="cta">
+    <h2>พร้อมยกระดับภาษาอังกฤษของคุณหรือองค์กรแล้วหรือยัง?</h2>
+    <p>ติดต่อเราเพื่อรับใบเสนอราคาและแผนการเรียนเฉพาะบุคคลฟรี</p>
+    <a href="#" class="btn btn--gold">ปรึกษาฟรี — ไม่มีข้อผูกมัด</a>
+    <a href="#" class="btn btn--outline">ดาวน์โหลด Brochure</a>
+</section>
 
 </body>
 </html>
