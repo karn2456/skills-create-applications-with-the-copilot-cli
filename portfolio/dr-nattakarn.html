@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Nattakarn Chaihawong — Aviation Management Expert | CATC Thailand</title>
+  <meta name="description" content="ดร.ณัฐกรานต์ ไชยหาวงศ์ — อาจารย์และนักวิจัยด้านการจัดการวิทยาการบิน สถาบันการบินพลเรือน กระทรวงคมนาคม ประเทศไทย" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Design Tokens ─── */
+    :root {
+      --green:       #96B800;
+      --green-glow:  rgba(150,184,0,0.20);
+      --blue-1:      #00D4FF;
+      --blue-2:      #3ABEFF;
+      --blue-3:      #4CC9FF;
+      --blue-glow:   rgba(0,212,255,0.15);
+      --white:       #F8F8F5;
+      --dark:        #0d1117;
+      --dark-2:      #0f1520;
+      --gray:        #F2F4F7;
+      --muted:       #8a9bb0;
+      --card-bg:     rgba(255,255,255,0.04);
+      --card-border: rgba(0,212,255,0.14);
+      --radius-sm:   10px;
+      --radius:      18px;
+      --radius-lg:   28px;
+    }
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'IBM Plex Sans Thai', 'Poppins', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--blue-2); border-radius: 10px; }
+
+    /* ─── Layout ─── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .section   { padding: 100px 0; }
+
+    /* ─── Atoms ─── */
+    .tag {
+      display: inline-block;
+      background: var(--green-glow);
+      color: var(--green);
+      border: 1px solid rgba(150,184,0,0.28);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .h2 .accent { color: var(--blue-1); }
+    .muted { color: var(--muted); font-size: 0.97rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 50px;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: all 0.28s ease; font-family: inherit;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-2), var(--blue-1));
+      color: #111;
+      box-shadow: 0 4px 20px rgba(0,212,255,0.30);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.45); }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.20);
+    }
+    .btn-ghost:hover { border-color: var(--blue-1); color: var(--blue-1); transform: translateY(-2px); }
+    .glass {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass:hover { box-shadow: 0 10px 40px var(--blue-glow); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; inset-inline: 0; z-index: 999;
+      height: 62px;
+      background: rgba(13,17,23,0.82);
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(0,212,255,0.09);
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family:'Poppins',sans-serif; font-weight:700; font-size:1.05rem; }
+    .nav-logo em { color: var(--blue-1); font-style: normal; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 0.86rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue-1); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 75% 65% at 85% 45%, rgba(0,212,255,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 45% at 15% 80%, rgba(150,184,0,0.06) 0%, transparent 60%),
+        var(--dark);
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 390px; gap: 56px; align-items: center;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+    .hero-eyebrow-label {
+      font-size: 0.78rem; font-weight: 700; color: var(--green);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .hero-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.1rem, 5.5vw, 3.5rem);
+      font-weight: 800; line-height: 1.08;
+    }
+    .hero-name-th {
+      display: block;
+      font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+      font-weight: 400; color: var(--muted); margin-top: 6px; margin-bottom: 18px;
+    }
+    .hero-role { color: var(--blue-1); font-weight: 600; font-size: 1.05rem; margin-bottom: 22px; }
+    .hero-bio { color: var(--muted); font-size: 0.97rem; max-width: 520px; margin-bottom: 34px; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-kpis { display: flex; gap: 36px; margin-top: 46px; flex-wrap: wrap; }
+    .kpi-n { font-family:'Poppins',sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--blue-1); line-height:1; }
+    .kpi-l { font-size: 0.77rem; color: var(--muted); margin-top: 4px; }
+
+    /* Profile Card */
+    .profile-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,212,255,0.16);
+      border-radius: var(--radius-lg);
+      padding: 32px 26px;
+      position: relative; overflow: hidden;
+    }
+    .profile-card::before {
+      content:''; position:absolute; top:-50px; right:-50px;
+      width:180px; height:180px; border-radius:50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.10), transparent 70%);
+    }
+    .avatar {
+      width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--green), var(--blue-2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; position: relative;
+    }
+    .avatar::after {
+      content:''; position:absolute; inset:-4px; border-radius:50%;
+      border: 2px solid var(--blue-1); opacity:.45;
+      animation: spin 7s linear infinite;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .pc-name  { text-align:center; font-family:'Poppins',sans-serif; font-weight:700; font-size:1.05rem; }
+    .pc-role  { text-align:center; font-size:0.8rem; color:var(--muted); margin-bottom:22px; }
+    .badge-list { display:flex; flex-direction:column; gap:9px; }
+    .badge {
+      display:flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,0.04); border-radius:var(--radius-sm); padding:10px 12px;
+    }
+    .badge-ico { font-size:1.1rem; flex-shrink:0; }
+    .badge-info { font-size:0.80rem; color:var(--muted); line-height:1.4; }
+    .badge-info strong { color:var(--white); display:block; font-size:0.85rem; }
+    .catc-badge {
+      margin-top:18px; text-align:center;
+      background: linear-gradient(135deg, rgba(150,184,0,0.12), rgba(0,212,255,0.08));
+      border: 1px solid rgba(150,184,0,0.22); border-radius:var(--radius-sm);
+      padding:10px 12px; font-size:0.77rem; color:var(--green); font-weight:700;
+    }
+
+    /* ─── STRIP ─── */
+    .kpi-strip {
+      display:flex;
+      border-top: 1px solid rgba(0,212,255,0.10);
+      border-bottom: 1px solid rgba(0,212,255,0.10);
+      background: rgba(0,212,255,0.02);
+    }
+    .strip-item {
+      flex:1; padding:26px 16px; text-align:center;
+      border-right: 1px solid rgba(0,212,255,0.10);
+    }
+    .strip-item:last-child { border-right:none; }
+    .strip-n { font-family:'Poppins',sans-serif; font-size:2.2rem; font-weight:800; color:var(--blue-1); line-height:1; }
+    .strip-l { font-size:0.77rem; color:var(--muted); margin-top:6px; }
+
+    /* ─── ABOUT ─── */
+    #about { background: linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+    /* Timeline */
+    .tl { margin-top:28px; }
+    .tl-row { display:flex; gap:18px; margin-bottom:24px; }
+    .tl-meta { display:flex; flex-direction:column; align-items:center; flex-shrink:0; width:72px; }
+    .tl-yr { font-family:'Poppins',sans-serif; font-size:0.72rem; font-weight:700; color:var(--blue-1); text-align:center; white-space:nowrap; }
+    .tl-d { width:10px; height:10px; border-radius:50%; background:var(--blue-1); box-shadow:0 0 8px var(--blue-1); flex-shrink:0; margin-top:6px; }
+    .tl-ln { width:1px; flex:1; background:rgba(0,212,255,0.14); margin-top:5px; }
+    .tl-body {}
+    .tl-deg { font-weight:600; font-size:0.93rem; margin-bottom:2px; }
+    .tl-sch { font-size:0.80rem; color:var(--muted); }
+    .tl-flag {
+      display:inline-block; margin-top:4px; font-size:0.70rem;
+      background:rgba(150,184,0,0.10); color:var(--green);
+      border-radius:4px; padding:2px 8px;
+    }
+    /* Bio */
+    .about-bio p { color:var(--muted); font-size:0.94rem; margin-bottom:14px; }
+    .chips { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:22px; }
+    .chip {
+      display:flex; align-items:center; gap:8px;
+      background:rgba(0,212,255,0.05); border:1px solid rgba(0,212,255,0.11);
+      border-radius:var(--radius-sm); padding:9px 13px; font-size:0.81rem;
+    }
+
+    /* ─── TEACHING ─── */
+    #teaching { background: var(--dark-2); }
+    .teach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px; }
+    .teach-card {
+      background:rgba(255,255,255,0.04); border:1px solid rgba(0,212,255,0.09);
+      border-radius:var(--radius); padding:24px 20px;
+      transition: all 0.3s;
+    }
+    .teach-card:hover { border-color:rgba(0,212,255,0.30); transform:translateY(-4px); box-shadow:0 12px 36px var(--blue-glow); }
+    .level-tag {
+      display:inline-block; font-size:0.70rem; font-weight:700; padding:3px 12px;
+      border-radius:50px; margin-bottom:14px; text-transform:uppercase; letter-spacing:.06em;
+    }
+    .lv-b { background:rgba(150,184,0,0.13); color:var(--green); }
+    .lv-m { background:rgba(58,190,255,0.13); color:var(--blue-2); }
+    .lv-d { background:rgba(0,212,255,0.13); color:var(--blue-1); }
+    .teach-card h3 { font-size:0.98rem; font-weight:700; margin-bottom:12px; }
+    .teach-list { list-style:none; }
+    .teach-list li {
+      display:flex; align-items:flex-start; gap:7px;
+      font-size:0.82rem; color:var(--muted);
+      padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.04);
+    }
+    .teach-list li:last-child { border-bottom:none; }
+    .teach-list li::before { content:'▸'; color:var(--blue-2); flex-shrink:0; margin-top:1px; }
+    .adv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px; }
+    .adv-card {
+      background:rgba(0,212,255,0.04); border:1px solid rgba(0,212,255,0.11);
+      border-radius:12px; padding:14px 16px;
+    }
+    .adv-card strong { color:var(--blue-1); display:block; font-size:0.88rem; margin-bottom:4px; }
+    .adv-card span { font-size:0.80rem; color:var(--muted); }
+
+    /* ─── PUBLICATIONS ─── */
+    #publications { background: var(--dark); }
+    .books-row { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:44px; margin-bottom:52px; }
+    .book-card {
+      background:linear-gradient(135deg,rgba(150,184,0,0.07),rgba(0,212,255,0.05));
+      border:1px solid rgba(150,184,0,0.18); border-radius:var(--radius);
+      padding:26px 22px; display:flex; gap:18px; align-items:flex-start;
+      transition:all 0.3s;
+    }
+    .book-card:hover { border-color:var(--green); transform:translateY(-3px); box-shadow:0 12px 36px rgba(150,184,0,0.10); }
+    .book-ico { font-size:2.4rem; flex-shrink:0; }
+    .book-title  { font-family:'Poppins',sans-serif; font-weight:700; font-size:0.97rem; margin-bottom:4px; }
+    .book-title-th { font-size:0.84rem; color:var(--muted); margin-bottom:10px; }
+    .book-tags { display:flex; flex-wrap:wrap; gap:7px; }
+    .book-tag { font-size:0.72rem; background:rgba(255,255,255,0.06); border-radius:5px; padding:2px 9px; color:var(--muted); }
+    .book-tag.isbn { color:var(--green); background:rgba(150,184,0,0.09); }
+
+    .pub-yr-head {
+      display:flex; align-items:center; gap:12px; margin-bottom:14px;
+    }
+    .pub-yr-head .yr {
+      font-family:'Poppins',sans-serif; font-size:1.25rem; font-weight:800; color:var(--blue-1);
+    }
+    .pub-yr-head::after { content:''; flex:1; height:1px; background:rgba(0,212,255,0.13); }
+    .pub-group { margin-bottom:34px; }
+    .pub-row {
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05);
+      border-left:3px solid var(--blue-2); border-radius:0 11px 11px 0;
+      padding:14px 18px; margin-bottom:9px; transition:all 0.2s;
+    }
+    .pub-row:hover { border-left-color:var(--blue-1); background:rgba(0,212,255,0.04); }
+    .pub-row p { font-size:0.86rem; color:var(--muted); line-height:1.6; }
+    .pub-journal { display:inline-block; margin-top:5px; font-size:0.75rem; color:var(--blue-2); font-style:italic; }
+
+    /* ─── CERTIFICATIONS ─── */
+    #certifications { background: var(--dark-2); }
+    .feat-certs { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px; margin-bottom:44px; }
+    .feat-cert {
+      background:linear-gradient(135deg,rgba(0,212,255,0.07),rgba(58,190,255,0.04));
+      border:1px solid rgba(0,212,255,0.18); border-radius:var(--radius);
+      padding:22px 18px; text-align:center; transition:all 0.3s;
+    }
+    .feat-cert:hover { border-color:var(--blue-1); transform:translateY(-4px); box-shadow:0 12px 36px var(--blue-glow); }
+    .fc-ico { font-size:2.2rem; margin-bottom:10px; }
+    .fc-title { font-family:'Poppins',sans-serif; font-weight:700; font-size:0.90rem; margin-bottom:5px; }
+    .fc-org   { font-size:0.77rem; color:var(--blue-2); margin-bottom:3px; }
+    .fc-year  { font-size:0.74rem; color:var(--muted); }
+    .cert-list { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .cert-row {
+      display:flex; align-items:center; gap:11px;
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+      border-radius:11px; padding:13px 15px; transition:all 0.2s;
+    }
+    .cert-row:hover { background:rgba(0,212,255,0.04); border-color:rgba(0,212,255,0.14); }
+    .cert-yr {
+      flex-shrink:0; font-family:'Poppins',sans-serif; font-size:0.72rem; font-weight:700;
+      color:var(--blue-1); background:rgba(0,212,255,0.09);
+      border-radius:5px; padding:2px 7px; min-width:42px; text-align:center;
+    }
+    .cert-info { font-size:0.82rem; color:var(--muted); }
+    .cert-info strong { color:var(--white); display:block; font-size:0.85rem; }
+
+    /* ─── CONTACT ─── */
+    #contact { background:linear-gradient(180deg, var(--dark-2) 0%, var(--dark) 100%); text-align:center; }
+    .contact-box {
+      max-width:680px; margin:44px auto 0;
+      background:rgba(255,255,255,0.04); border:1px solid rgba(0,212,255,0.14);
+      border-radius:var(--radius-lg); padding:44px 36px;
+    }
+    .c-email { font-family:'Poppins',sans-serif; font-size:1.25rem; font-weight:700; color:var(--blue-1); }
+    .c-phone { font-size:0.97rem; color:var(--muted); margin-bottom:34px; margin-top:4px; }
+    .social-row { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-bottom:34px; }
+    .social-btn {
+      display:flex; align-items:center; gap:7px;
+      padding:9px 17px; border-radius:50px;
+      background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.10);
+      font-size:0.82rem; font-weight:500; color:var(--muted); transition:all 0.24s;
+    }
+    .social-btn:hover { background:rgba(0,212,255,0.09); border-color:var(--blue-2); color:var(--white); transform:translateY(-2px); }
+    .c-org { font-size:0.83rem; color:var(--muted); padding-top:26px; border-top:1px solid rgba(255,255,255,0.06); }
+    .c-org strong { color:var(--green); }
+    .c-org em { color:var(--blue-2); font-style:normal; }
+
+    /* ─── FOOTER ─── */
+    footer { background:#080b10; text-align:center; padding:24px; font-size:0.77rem; color:var(--muted); border-top:1px solid rgba(255,255,255,0.04); }
+    footer em { color:var(--blue-1); font-style:normal; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width:900px) {
+      .hero-inner   { grid-template-columns:1fr; }
+      .profile-card { display:none; }
+      .about-grid   { grid-template-columns:1fr; }
+      .teach-grid   { grid-template-columns:1fr; }
+      .adv-grid     { grid-template-columns:1fr 1fr; }
+      .books-row    { grid-template-columns:1fr; }
+      .feat-certs   { grid-template-columns:1fr 1fr; }
+      .cert-list    { grid-template-columns:1fr; }
+      .kpi-strip    { flex-wrap:wrap; }
+      .strip-item   { flex:0 0 50%; }
+      .nav-links    { display:none; }
+    }
+    @media (max-width:600px) {
+      .section     { padding:64px 0; }
+      .chips       { grid-template-columns:1fr; }
+      .adv-grid    { grid-template-columns:1fr; }
+      .feat-certs  { grid-template-columns:1fr; }
+      .strip-item  { flex:0 0 50%; }
+      .contact-box { padding:28px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Dr.<em>Nattakarn</em> · CATC</div>
+    <ul class="nav-links">
+      <li><a href="#about">เกี่ยวกับฉัน</a></li>
+      <li><a href="#teaching">การสอน</a></li>
+      <li><a href="#publications">ผลงานวิจัย</a></li>
+      <li><a href="#certifications">ใบรับรอง</a></li>
+      <li><a href="#contact">ติดต่อ</a></li>
+    </ul>
+    <a href="mailto:nattakarn@catc.or.th" class="btn btn-primary" style="padding:9px 20px;font-size:0.82rem;">✉ ติดต่อ</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- LEFT -->
+      <div>
+        <div class="hero-eyebrow">
+          <div class="pulse-dot"></div>
+          <span class="hero-eyebrow-label">✈ Aviation · Research · Education · 2005–Present</span>
+        </div>
+
+        <h1 class="hero-name">
+          Dr. Nattakarn<br/>Chaihawong
+          <span class="hero-name-th">ดร. ณัฐกรานต์ ไชยหาวงศ์</span>
+        </h1>
+
+        <p class="hero-role">Lecturer · Researcher · Aviation Management Consultant</p>
+
+        <p class="hero-bio">
+          ผู้เชี่ยวชาญการจัดการธุรกิจการบิน โลจิสติกส์ระหว่างประเทศ และนวัตกรรมการศึกษาการบิน
+          สังกัดสถาบันการบินพลเรือน (CATC) กระทรวงคมนาคม มาตรฐาน ICAO TRAINAIR PLUS Platinum
+        </p>
+
+        <div class="hero-cta">
+          <a href="#publications" class="btn btn-primary">📚 ดูผลงานวิจัย</a>
+          <a href="#contact" class="btn btn-ghost">✉ ติดต่อฉัน</a>
+        </div>
+
+        <div class="hero-kpis">
+          <div><div class="kpi-n">20+</div><div class="kpi-l">ปีประสบการณ์</div></div>
+          <div><div class="kpi-n">13+</div><div class="kpi-l">บทความวิจัย</div></div>
+          <div><div class="kpi-n">2</div><div class="kpi-l">ตำราวิชาการ</div></div>
+          <div><div class="kpi-n">3</div><div class="kpi-l">ประเทศที่สำเร็จการศึกษา</div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Profile Card -->
+      <div class="profile-card">
+        <div class="avatar">✈</div>
+        <div class="pc-name">Dr. Nattakarn Chaihawong</div>
+        <div class="pc-role">ครูวิชาภาคพื้น · กองวิชาวิทยาการการบิน · CATC</div>
+
+        <div class="badge-list">
+          <div class="badge">
+            <span class="badge-ico">🎓</span>
+            <div class="badge-info"><strong>DBA — RMUTR Thailand (2022)</strong>Doctor of Business Administration</div>
+          </div>
+          <div class="badge">
+            <span class="badge-ico">🌏</span>
+            <div class="badge-info"><strong>MSc — UC Santa Cruz / Wollongong</strong>Supply Chain & Logistics · USA & Australia</div>
+          </div>
+          <div class="badge">
+            <span class="badge-ico">📘</span>
+            <div class="badge-info"><strong>2 ตำราวิชาการ ด้านการบิน</strong>Innovation in Aviation Technology · Air Transport System</div>
+          </div>
+          <div class="badge">
+            <span class="badge-ico">🏅</span>
+            <div class="badge-info"><strong>ICAO Certified Instructor</strong>TIC Part 2 · DGUTI EN · DGR</div>
+          </div>
+        </div>
+
+        <div class="catc-badge">
+          ✅ ICAO TRAINAIR PLUS — Platinum Member Institution
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── KPI STRIP ─── -->
+<div class="kpi-strip">
+  <div class="strip-item"><div class="strip-n">20+</div><div class="strip-l">ปีที่สอนที่ CATC</div></div>
+  <div class="strip-item"><div class="strip-n">13+</div><div class="strip-l">งานวิจัยตีพิมพ์</div></div>
+  <div class="strip-item"><div class="strip-n">3</div><div class="strip-l">ระดับการสอน (ป.ตรี–เอก)</div></div>
+  <div class="strip-item"><div class="strip-n">2</div><div class="strip-l">ตำราวิชาการ</div></div>
+  <div class="strip-item"><div class="strip-n">3</div><div class="strip-l">ประเทศที่สำเร็จการศึกษา</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Education Timeline -->
+      <div>
+        <span class="tag">🎓 Educational Journey</span>
+        <h2 class="h2">เส้นทาง<span class="accent">การศึกษา</span></h2>
+        <div class="tl">
+          <div class="tl-row">
+            <div class="tl-meta">
+              <div class="tl-yr">2018–2022</div>
+              <div class="tl-d" style="margin-top:8px;"></div>
+              <div class="tl-ln"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-deg">ปริญญาเอก — บริหารธุรกิจดุษฎีบัณฑิต (DBA)</div>
+              <div class="tl-sch">การจัดการธุรกิจ — มทร.รัตนโกสินทร์ (RMUTR)</div>
+              <span class="tl-flag">🇹🇭 ไทย</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-meta">
+              <div class="tl-yr">2006</div>
+              <div class="tl-d" style="margin-top:8px;"></div>
+              <div class="tl-ln"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-deg">ปริญญาโท — MSc Supply Chain Management (Extended)</div>
+              <div class="tl-sch">University of California, Santa Cruz</div>
+              <span class="tl-flag">🇺🇸 สหรัฐอเมริกา</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-meta">
+              <div class="tl-yr">2003–2004</div>
+              <div class="tl-d" style="margin-top:8px;"></div>
+              <div class="tl-ln"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-deg">ปริญญาโท — MSc Logistics &amp; Supply Chain Management</div>
+              <div class="tl-sch">University of Wollongong (UOW)</div>
+              <span class="tl-flag">🇦🇺 ออสเตรเลีย</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-meta">
+              <div class="tl-yr">1998–2002</div>
+              <div class="tl-d" style="margin-top:8px;"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-deg">ปริญญาตรี — BBA การจัดการ</div>
+              <div class="tl-sch">มหาวิทยาลัยกรุงเทพ (Bangkok University)</div>
+              <span class="tl-flag">🇹🇭 ไทย</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio & Expertise -->
+      <div class="about-bio">
+        <span class="tag">✈ About Me</span>
+        <h2 class="h2">นักวิชาการการบิน<br/><span class="accent">ระดับนานาชาติ</span></h2>
+
+        <p>ดร. ณัฐกรานต์ ไชยหาวงศ์ เริ่มต้นอาชีพที่สถาบันการบินพลเรือน (CATC) ตั้งแต่ปี พ.ศ. 2548 ในตำแหน่ง <strong>ครูวิชาภาคพื้น กองวิชาวิทยาการการบิน</strong> และพัฒนาตนเองอย่างต่อเนื่อง ทั้งด้านการศึกษานานาชาติ การวิจัย และพัฒนาหลักสูตรตามมาตรฐาน ICAO</p>
+
+        <p>ด้วยวุฒิการศึกษาจาก 3 ประเทศและประสบการณ์การสอนทุกระดับตั้งแต่ปริญญาตรีถึงปริญญาเอก เขาเป็นที่ปรึกษาวิทยานิพนธ์ (Co-Advisor) ในหลักสูตร MM·AVM และมีส่วนร่วมในเวทีการศึกษาการบินนานาชาติ</p>
+
+        <p>งานวิจัยครอบคลุมนวัตกรรมดิจิทัลในสนามบิน ความพึงพอใจผู้โดยสาร และการพัฒนาหลักสูตร ตีพิมพ์ในวารสารระดับชาติและนานาชาติกว่า 13 ชิ้น</p>
+
+        <div class="chips">
+          <div class="chip">✈ Aviation Business Management</div>
+          <div class="chip">📦 Air Cargo &amp; Logistics</div>
+          <div class="chip">🛫 Airline Management</div>
+          <div class="chip">🏗 Airport Operations</div>
+          <div class="chip">📊 Research · SEM / CFA</div>
+          <div class="chip">🌱 SDGs in Aviation</div>
+          <div class="chip">💻 Digital Innovation</div>
+          <div class="chip">🎓 Curriculum Development</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TEACHING
+═══════════════════════════════════════════ -->
+<section id="teaching" class="section">
+  <div class="container">
+    <div style="text-align:center; max-width:580px; margin:0 auto 48px;">
+      <span class="tag">📖 Teaching & Advising</span>
+      <h2 class="h2">รายวิชาที่<span class="accent">รับผิดชอบ</span></h2>
+      <p class="muted">สอนครอบคลุมทุกระดับในสาขาการจัดการการบิน ทั้งภาคทฤษฎีและการวิจัย</p>
+    </div>
+
+    <div class="teach-grid">
+      <!-- Bachelor -->
+      <div class="teach-card">
+        <span class="level-tag lv-b">ปริญญาตรี · Bachelor's</span>
+        <h3>Undergraduate Courses</h3>
+        <ul class="teach-list">
+          <li>Cargo Management</li>
+          <li>Marketing Principles</li>
+          <li>Cargo &amp; Forwarder Agency</li>
+          <li>Air Cargo Marketing</li>
+          <li>Air Transport System</li>
+          <li>Sea Freight Industry</li>
+          <li>Air Transport Management</li>
+          <li>Innovation in Aviation Industry</li>
+        </ul>
+      </div>
+      <!-- Master -->
+      <div class="teach-card">
+        <span class="level-tag lv-m">ปริญญาโท · Master's — MM·AVM</span>
+        <h3>Graduate Courses</h3>
+        <ul class="teach-list">
+          <li>Research Methodology</li>
+          <li>Air Traffic Management</li>
+          <li>Safety Management System &amp; Human Factors</li>
+          <li>Introduction to Aviation</li>
+          <li>Independent Study</li>
+          <li>Thesis Supervision (Co-Advisor)</li>
+        </ul>
+      </div>
+      <!-- Doctoral -->
+      <div class="teach-card">
+        <span class="level-tag lv-d">ปริญญาเอก · Doctoral</span>
+        <h3>Doctoral Program</h3>
+        <ul class="teach-list">
+          <li>Philosophy in Management</li>
+          <li>คณะกรรมการหลักสูตรปริญญาดุษฎีบัณฑิต</li>
+          <li>กำกับหลักสูตร Aviation Science (Commercial Pilot Major)</li>
+        </ul>
+        <div style="margin-top:18px; padding:12px; background:rgba(0,212,255,0.06); border-radius:9px; font-size:0.79rem; color:var(--muted);">
+          <span style="color:var(--blue-1); font-weight:600;">MM·AVM International Sessions</span><br/>
+          ดำเนินการนิเทศวิทยานิพนธ์และประชุมกับนักศึกษาต่างชาติ ผ่านระบบ Zoom Workplace
+        </div>
+      </div>
+    </div>
+
+    <!-- Advisory Topics -->
+    <div style="margin-top:48px;">
+      <h3 style="font-family:'Poppins',sans-serif; font-size:1.15rem; font-weight:700; color:var(--blue-1); margin-bottom:18px;">
+        หัวข้อที่รับเป็นที่ปรึกษาวิจัย
+      </h3>
+      <div class="adv-grid">
+        <div class="adv-card"><strong>✈ Airline &amp; Airport Management</strong><span>กลยุทธ์สายการบิน ความพึงพอใจผู้โดยสาร ประสิทธิภาพสนามบิน</span></div>
+        <div class="adv-card"><strong>📦 Air Cargo &amp; Logistics</strong><span>การขนส่งสินค้าทางอากาศ ห่วงโซ่อุปทาน ตัวแทนออกของ</span></div>
+        <div class="adv-card"><strong>💻 Digital Aviation Innovation</strong><span>Digital Services in Airport · Mobile App · Passenger Experience</span></div>
+        <div class="adv-card"><strong>📊 Research Methodology</strong><span>SEM · CFA · Mixed Methods · Quantitative Analysis</span></div>
+        <div class="adv-card"><strong>🎓 Aviation Curriculum Development</strong><span>ICAO Standards · TQF · Commercial Pilot Program</span></div>
+        <div class="adv-card"><strong>🌱 SDGs &amp; Sustainable Aviation</strong><span>ความยั่งยืนในอุตสาหกรรมการบินไทย</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PUBLICATIONS
+═══════════════════════════════════════════ -->
+<section id="publications" class="section">
+  <div class="container">
+    <span class="tag">📚 Academic Works</span>
+    <h2 class="h2">ตำรา &amp; <span class="accent">ผลงานวิจัย</span></h2>
+
+    <!-- Books -->
+    <div class="books-row">
+      <div class="book-card">
+        <div class="book-ico">📗</div>
+        <div>
+          <div class="book-title">Innovation in Aviation Technology</div>
+          <div class="book-title-th">นวัตกรรมในเทคโนโลยีการบิน</div>
+          <p style="font-size:0.81rem; color:var(--muted); margin-bottom:10px;">ตำราอิเล็กทรอนิกส์สำหรับรายวิชา Innovation in Aviation Industry ระดับปริญญาตรี</p>
+          <div class="book-tags">
+            <span class="book-tag isbn">ISBN 978-616-626-277-3</span>
+            <span class="book-tag">CATC Press · 2025</span>
+            <span class="book-tag">E-book</span>
+          </div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-ico">📘</div>
+        <div>
+          <div class="book-title">Air Transport System: Science &amp; Management for Aviation Excellence</div>
+          <div class="book-title-th">ระบบการขนส่งทางอากาศ: วิทยาการและการจัดการเพื่อความเป็นเลิศทางการบิน</div>
+          <p style="font-size:0.81rem; color:var(--muted); margin-bottom:10px;">ร่วมเขียนกับทีมวิชาการ กองวิชาวิทยาการการบิน CATC</p>
+          <div class="book-tags">
+            <span class="book-tag">CATC 2030 Edition</span>
+            <span class="book-tag">Department of Aviation Science</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Papers -->
+    <h3 style="font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:28px;color:var(--blue-1);">📝 Research Publications</h3>
+
+    <div class="pub-group">
+      <div class="pub-yr-head"><span class="yr">2026</span></div>
+      <div class="pub-row"><p>Chaihawong, N. A strategic model for aviation curriculum management integrating competency and qualification frameworks.<span class="pub-journal">Educational Administration and Innovation Journal, 6(3). ISSN 2822-0056</span></p></div>
+      <div class="pub-row"><p>Chaihawong, N., Wangsuphakijkosol, J., &amp; Saikam, C. Strategic governance and excellence in commercial pilot curriculum: A causal model for aviation education policy development.<span class="pub-journal">Journal of Interdisciplinary and Innovation Management, 5(1)</span></p></div>
+      <div class="pub-row"><p>Ruangdueytum, K., Plangwattana, W., &amp; Chaihawong, N. Guidelines for enhancing work efficiency of senior officers: A case study of compensation and payroll in an airline.<span class="pub-journal">Journal of Social Science Development (JSSD), 6(2)</span></p></div>
+    </div>
+
+    <div class="pub-group">
+      <div class="pub-yr-head"><span class="yr">2025</span></div>
+      <div class="pub-row"><p>Chaihawong, N. Strategic model for curriculum management of the Bachelor of Management Program in Aviation Science (Commercial Pilot Major) under ICAO and TQF Standards.</p></div>
+      <div class="pub-row"><p>Chaihawong, N. Passenger acceptance and satisfaction toward digital check-in services: A comparative study of Chiang Mai and Don Mueang International Airports.</p></div>
+    </div>
+
+    <div class="pub-group">
+      <div class="pub-yr-head"><span class="yr">2024</span></div>
+      <div class="pub-row"><p>Chaihawong, N. Determinants of customer satisfaction in Thai airports.<span class="pub-journal">Academic Journal of Phranakhon Rajabhat University</span></p></div>
+      <div class="pub-row"><p>Chaihawong, N. Assessing passengers' willingness to pay for digital services in airports.<span class="pub-journal">Journal of Social Communication</span></p></div>
+      <div class="pub-row"><p>Chaihawong, N. Confirmatory factor analysis model of airlines resilience in Thailand.<span class="pub-journal">JMND</span></p></div>
+    </div>
+
+    <div class="pub-group">
+      <div class="pub-yr-head"><span class="yr">2022–2023</span></div>
+      <div class="pub-row"><p>Chaihawong, N. (2023). Academic achievement factors in Master's Program. / Innovation for passenger convenience in airports.<span class="pub-journal">Journal of Technical Education Development (JTED)</span></p></div>
+      <div class="pub-row"><p>Chaihawong, N. (2022). Willingness to pay at Suvarnabhumi Airport.<span class="pub-journal">DPU Suthiparithat Journal</span></p></div>
+      <div class="pub-row"><p>Chaihawong, N. (2019). Mobile travel agent app adoption in Thailand.<span class="pub-journal">ISBITM Conference Proceedings</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CERTIFICATIONS
+═══════════════════════════════════════════ -->
+<section id="certifications" class="section">
+  <div class="container">
+    <span class="tag">🏅 International Certifications</span>
+    <h2 class="h2">ใบรับรอง<span class="accent">ระดับสากล</span></h2>
+    <p class="muted" style="max-width:520px;">ใบรับรองจากองค์กรการบินชั้นนำระดับโลก ได้แก่ ICAO, IATA, ETS และ AOT</p>
+
+    <!-- Featured 3 -->
+    <div class="feat-certs">
+      <div class="feat-cert">
+        <div class="fc-ico">🌐</div>
+        <div class="fc-title">ICAO Training Instructors Course (TIC) Part 2</div>
+        <div class="fc-org">ICAO TRAINAIR PLUS | No. TIC-245618247-2019</div>
+        <div class="fc-year">25 Feb – 1 Mar 2019 · CATC Thailand</div>
+      </div>
+      <div class="feat-cert">
+        <div class="fc-ico">⚠️</div>
+        <div class="fc-title">Technical Instructions — Dangerous Goods by Air (DGUTI EN)</div>
+        <div class="fc-org">ICAO TRAINAIR PLUS | No. DGUTI-071984-2023</div>
+        <div class="fc-year">29 September 2023 · Signed by ICAO Chief Global Aviation Training</div>
+      </div>
+      <div class="feat-cert">
+        <div class="fc-ico">✈</div>
+        <div class="fc-title">IATA Airline Commercial Management</div>
+        <div class="fc-org">IATA — International Air Transport Association</div>
+        <div class="fc-year">For Operations Professionals · 2025</div>
+      </div>
+    </div>
+
+    <!-- Full List -->
+    <div class="cert-list">
+      <div class="cert-row"><span class="cert-yr">2026</span><div class="cert-info"><strong>Sustainable Business Model Canvas for Sustainable Growth</strong>RCIM, College of Innovation Management</div></div>
+      <div class="cert-row"><span class="cert-yr">2025</span><div class="cert-info"><strong>Higher Education Innovation Management Program (Cohort 2)</strong>RCIM — Study Visit &amp; Science/Technology Knowledge Service</div></div>
+      <div class="cert-row"><span class="cert-yr">2025</span><div class="cert-info"><strong>Thai Cargo Academy Cooperative Certificate</strong>Thai Cargo Academy</div></div>
+      <div class="cert-row"><span class="cert-yr">2025</span><div class="cert-info"><strong>SDGs in the Thai Aviation Industry — Forum</strong>Dhurakij Pundit University</div></div>
+      <div class="cert-row"><span class="cert-yr">2024–25</span><div class="cert-info"><strong>Human Research Ethics &amp; Statistical SEM Workshop</strong>CATC / RCIM</div></div>
+      <div class="cert-row"><span class="cert-yr">2021</span><div class="cert-info"><strong>Advanced Qualitative and Mixed-Method Research</strong>Civil Aviation Training Center, Thailand [Workshop]</div></div>
+      <div class="cert-row"><span class="cert-yr">2019</span><div class="cert-info"><strong>TOEIC Propell Teacher Workshop</strong>ETS — Speaking &amp; Writing / Listening &amp; Reading (2 certificates)</div></div>
+      <div class="cert-row"><span class="cert-yr">2018</span><div class="cert-info"><strong>สุดยอดเทคนิคการสอนสมัยใหม่ (Advanced Modern Teaching Techniques)</strong>NIDA — สถาบันบัณฑิตพัฒนบริหารศาสตร์</div></div>
+      <div class="cert-row"><span class="cert-yr">2011</span><div class="cert-info"><strong>Senior Airport Management</strong>AOT — บริษัท ท่าอากาศยานไทย จำกัด (มหาชน)</div></div>
+      <div class="cert-row"><span class="cert-yr">2010</span><div class="cert-info"><strong>Unit Loading Device and Load Control</strong>Civil Aviation Training Center</div></div>
+      <div class="cert-row"><span class="cert-yr">2009</span><div class="cert-info"><strong>Honorary Winged Airman — นักบินกิตติมศักดิ์</strong>กองทัพอากาศไทย · Royal Thai Air Force</div></div>
+      <div class="cert-row"><span class="cert-yr">2006</span><div class="cert-info"><strong>ICAO Global Symposium on Air Transport Liberalization</strong>ICAO · Dubai, United Arab Emirates</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <span class="tag">📬 Get in Touch</span>
+    <h2 class="h2" style="text-align:center;">มาร่วม<span class="accent">สร้างสรรค์</span>ด้วยกัน</h2>
+    <p class="muted" style="text-align:center; max-width:480px; margin:0 auto;">
+      ไม่ว่าจะเป็นงานวิจัย วิทยากร ที่ปรึกษาหลักสูตร หรือพัฒนาองค์กรด้านการบิน — ยินดีให้บริการ
+    </p>
+
+    <div class="contact-box">
+      <div style="font-size:2.2rem; margin-bottom:14px;">✉</div>
+      <div class="c-email">nattakarn@catc.or.th</div>
+      <div class="c-phone">(+66) 93 452 4463</div>
+
+      <div class="social-row">
+        <a href="https://www.linkedin.com/in/nattakarn-catc/" class="social-btn" target="_blank">💼 LinkedIn</a>
+        <a href="https://www.facebook.com/Dr.Nattakarn/" class="social-btn" target="_blank">📘 Facebook</a>
+        <a href="https://www.instagram.com/karncatc" class="social-btn" target="_blank">📷 Instagram</a>
+        <a href="https://github.com/karn2456" class="social-btn" target="_blank">💻 GitHub</a>
+        <a href="https://www.kaggle.com/nattakarn2491" class="social-btn" target="_blank">📊 Kaggle</a>
+        <a href="https://orcid.org/0009-0001-0290-9045" class="social-btn" target="_blank">🔬 ORCID</a>
+      </div>
+
+      <div class="c-org">
+        <strong>Civil Aviation Training Center (CATC)</strong><br/>
+        กองวิชาวิทยาการการบิน — Aviation Science Management Division<br/>
+        กระทรวงคมนาคม ประเทศไทย<br/>
+        <em style="display:block; margin-top:8px;">✅ ICAO TRAINAIR PLUS Platinum Member Institution</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>© 2026 Dr. Nattakarn Chaihawong · <em>CATC Thailand</em> · ORCID 0009-0001-0290-9045</p>
+  <p style="margin-top:6px; font-size:0.72rem; opacity:.7;">Aviation Business Management · Air Cargo · Airline Management · Airport Management · Aviation Research</p>
+</footer>
+
+</body>
+</html>
